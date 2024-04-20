@@ -6,11 +6,13 @@
 <jsp:include page="./SiteParts/dash_header.jsp" />
 <jsp:include page="./SiteParts/alerts.jsp" />   
 
+<%
 
-<h1 class="text-center">Index</h1>
+String role = (String) session.getAttribute("role");
+if (role != null) { %>    
+<jsp:include page="./SiteParts/submenubar.jsp" />
+ <%  } %>
 
-        
-<!--body-->
 
  
  <jsp:include page="./SiteParts/dash_footer.jsp" />   
