@@ -27,17 +27,17 @@ public class SignupServlet extends HttpServlet {
         
         
         if (username != null && !username.matches(regex)) {
-            response.sendRedirect("index.jsp?err=Username can only be characters from a-z and 0-9");
+            response.sendRedirect("signup.jsp?err=Username can only be characters from a-z and 0-9");
         }
         else if (password != null && !password.matches(specialCharRegex)) {
-            response.sendRedirect("index.jsp?err=Password needs to have at least one special character");
+            response.sendRedirect("signup.jsp?err=Password needs to have at least one special character");
         }
         else if (password != null && !password.equals(password_rep)) {
-            response.sendRedirect("index.jsp?err=Passwords did not matched");
+            response.sendRedirect("signup.jsp?err=Passwords did not matched");
         }
         else if (username == null || email == null || password == null || password_rep == null || username == "" || email == "" || password == "" || password_rep == "")
         {
-            response.sendRedirect("index.jsp?err=All fields needs to be filled");        
+            response.sendRedirect("signup.jsp?err=All fields needs to be filled");        
         }
         else {
             String sql = "INSERT INTO users(username, email, password) VALUES ('" + username + "', '" + email + "', '" + password + "')";
@@ -45,11 +45,11 @@ public class SignupServlet extends HttpServlet {
             DB db = new DB();
             int x = db.run_sql(sql);
             if (x > 0) {
-            response.sendRedirect("index.jsp?ok=User Registered successfully"); 
+            response.sendRedirect("signup.jsp?ok=User Registered successfully"); 
             }
             
             else {
-            response.sendRedirect("index.jsp?err=Server Error"); 
+            response.sendRedirect("signup.jsp?err=Server Error"); 
             }
         }
         }
