@@ -1,5 +1,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
+<%
+    String pageTitle = "Home";
+    request.setAttribute("title", pageTitle);
+%>
 <jsp:include page="./SiteParts/header.jsp" />
 
 

@@ -17,6 +17,9 @@ public class SignupServlet extends HttpServlet {
             throws ServletException, IOException {
          response.setContentType("text/html");
         
+        String first_name = request.getParameter("first_name");
+        String last_name = request.getParameter("last_name");
+        String gender = request.getParameter("gender");
         String username = request.getParameter("username");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
@@ -24,6 +27,8 @@ public class SignupServlet extends HttpServlet {
         String regex = "^[a-zA-Z0-9]*$";
         
         String specialCharRegex = ".*[!@#$%^&*()\\-_=+\\\\|\\[{\\]};:'\",<.>/?`~].*";
+        
+        DB db = new DB();
         
         
         if (username != null && !username.matches(regex)) {
@@ -35,19 +40,22 @@ public class SignupServlet extends HttpServlet {
         else if (password != null && !password.equals(password_rep)) {
             response.sendRedirect("signup.jsp?err=Passwords did not matched");
         }
-        else if (username == null || email == null || password == null || password_rep == null || username == "" || email == "" || password == "" || password_rep == "")
+        else if (username == null || email == null || password == null || password_rep == null || first_name == null || last_name == null || gender == null || username == "" || email == "" || password == "" || password_rep == "" || first_name == "" || last_name == "" || gender == "")
         {
             response.sendRedirect("signup.jsp?err=All fields needs to be filled");        
         }
+        else if (0 < db.checkUsername(username)) {
+            response.sendRedirect("signup.jsp?err=Username Already exsists. Try another one"); 
+        }
+        else if (0 < db.checkEmail(email)) {
+            response.sendRedirect("signup.jsp?err=Email Already exsists. Try another one"); 
+        }
         else {
-            String sql = "INSERT INTO users(username, email, password) VALUES ('" + username + "', '" + email + "', '" + password + "')";
             
-            DB db = new DB();
-            int x = db.run_sql(sql);
+            int x = db.registerUser(username, password, first_name, last_name, gender, email);
             if (x > 0) {
             response.sendRedirect("signup.jsp?ok=User Registered successfully"); 
             }
-            
             else {
             response.sendRedirect("signup.jsp?err=Server Error"); 
             }
