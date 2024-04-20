@@ -1,3 +1,4 @@
+<%@page import="Config.Functions"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%
@@ -5,9 +6,7 @@
     request.setAttribute("title", pageTitle);
 %>
 
-<jsp:include page="./SiteParts/header.jsp">
-    <jsp:param name="title" value="Custom Title for Index Page" />
-</jsp:include>        
+<jsp:include page="./SiteParts/header.jsp" />
 
  <section class="signup-content d-felx justify-center align-items-center">
     <div class="signup-left">
@@ -18,7 +17,7 @@
         <div class="container">
             <h3 class="text-center my-5 light-container-style py-3" style="margin: 0 !important;">Sign Up</h3>
              <jsp:include page="./SiteParts/alerts.jsp" />   
-            <form class="row g-3 needs-validation light-container-style " method="post" action="SignupServlet" novalidate>
+            <form class="row g-3 needs-validation light-container-style " method="post" action="SignupServlet">
                 <div class="col-md-6">
                   <label  class="form-label">First Name</label>
                   <input type="text" class="form-control form-control-sm defalt-input-style text-white" required name="first_name" placeholder="First Name">
@@ -41,18 +40,20 @@
                 <div class="col-md-6">
                     <label class="form-label">Gender</label>
                     <select name="gender" class="form-control form-select-sm defalt-input-style text-white" required>
-                        <option value="m">Male</option>
-                        <option value="f">Female</option>
-                        <option value="o">Other</option>
+                        <%
+                        Functions func = new Functions();
+                        String options = func.setGender("");
+                        %>
+                        <%=options %>
                     </select>
                 </div>
                 <div class="col-md-6">
                   <label  class="form-label">Password</label>
-                  <input type="password" class="form-control defalt-input-style text-white form-control-sm" required name="password" placeholder="Password">
+                  <input type="password" class="form-control defalt-input-style text-white form-control-sm" name="password" placeholder="Password" required>
                 </div>
                 <div class="col-md-6">
                   <label  class="form-label">Repeat Password</label>
-                  <input type="password" class="form-control defalt-input-style text-white form-control-sm" required name="password_rep" placeholder="Password">
+                  <input type="password" class="form-control defalt-input-style text-white form-control-sm" name="password_rep" placeholder="Password" required>
                 </div>
 
               <button class="btn btn-warning col-12 mt-5" type="submit">Sign Up</button>

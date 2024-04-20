@@ -16,14 +16,14 @@
         <div class="container">
             <h3 class="text-center my-5 light-container-style py-3" style="margin: 0 !important;">LogIn</h3>
              <jsp:include page="./SiteParts/alerts.jsp" />   
-            <form class="row g-3 needs-validation light-container-style " method="post" action="LoginServlet" novalidate>
+            <form class="row g-3 needs-validation light-container-style " method="post" action="LoginServlet">
                 <div class="col-md-12">
                   <label  class="form-label">Username / Email</label>
-                  <input type="text" class="form-control form-control-sm defalt-input-style text-white" required name="username" placeholder="Username Or Email">
+                  <input type="text" class="form-control form-control-sm defalt-input-style text-white" name="username" placeholder="Username Or Email" required>
                 </div>
                 <div class="col-md-12">
                   <label  class="form-label">Password</label>
-                  <input type="password" class="form-control defalt-input-style text-white form-control-sm" required name="password" placeholder="Password">
+                  <input type="password" class="form-control defalt-input-style text-white form-control-sm" name="password" placeholder="Password" required>
                 </div>
 
               <button class="btn btn-warning col-12 mt-5" type="submit">Log In</button>

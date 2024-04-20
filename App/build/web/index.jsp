@@ -1,16 +1,16 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-    String pageTitle = "Home";
+    String pageTitle = "Index";
     request.setAttribute("title", pageTitle);
 %>
-<jsp:include page="./SiteParts/header.jsp" />
+<jsp:include page="./SiteParts/dash_header.jsp" />
+<jsp:include page="./SiteParts/alerts.jsp" />   
 
 
-<h1 class="text-center my-5">Index</h1>
+<h1 class="text-center">Index</h1>
 
- <jsp:include page="./SiteParts/alerts.jsp" />   
         
 <!--body-->
 
  
- <jsp:include page="./SiteParts/footer.jsp" />   
+ <jsp:include page="./SiteParts/dash_footer.jsp" />   

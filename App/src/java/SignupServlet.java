@@ -24,6 +24,7 @@ public class SignupServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String password_rep = request.getParameter("password_rep");
+        
         String regex = "^[a-zA-Z0-9]*$";
         
         String specialCharRegex = ".*[!@#$%^&*()\\-_=+\\\\|\\[{\\]};:'\",<.>/?`~].*";

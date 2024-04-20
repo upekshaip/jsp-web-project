@@ -88,6 +88,8 @@ input[type="number"] {
 }
 
 input[type="text"]:disabled {
+  border: 2px solid var(--color-border-default);
+  background-color: var(--color-background-defalt);
   font-size: small;
 }
 

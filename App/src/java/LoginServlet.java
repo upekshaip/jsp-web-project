@@ -21,16 +21,13 @@ public class LoginServlet extends HttpServlet {
         DB db = new DB();
         HashMap user = db.loginUser(username, password);
 
-        PrintWriter out = response.getWriter();
-
         if (user != null) {
-        out.println(user);        
-        out.println("login success");
         
         HttpSession session = request.getSession();
         session.setAttribute("user", user);
         session.setAttribute("username", user.get("username"));
-            response.sendRedirect("dashboard.jsp");
+        session.setAttribute("role", "user");
+        response.sendRedirect("index.jsp");
         
         } else {
             response.sendRedirect("login.jsp?err=Check Username Or Password");
