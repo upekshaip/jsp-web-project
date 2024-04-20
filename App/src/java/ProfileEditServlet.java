@@ -23,17 +23,24 @@ public class ProfileEditServlet extends HttpServlet {
         String email = request.getParameter("email");
         String gender = request.getParameter("gender");
         
-        DB db = new DB();
-        HashMap user = db.loginUser(username, password);
-
-        if (user != null) {
         
-        HttpSession session = request.getSession();
+        
+        DB db = new DB();
+        
+        if (db.checkEmail2(email, username) == 0) {
+            response.sendRedirect("profile.jsp?err=Email Alredy Exists. Try Another One");
+            return;
+        }
+        
+        HashMap user = db.updateUser(username, first_name, last_name, email, gender);
+        
+        if (user != null) {
+        HttpSession session = request.getSession(false);
         session.setAttribute("user", user);
-        response.sendRedirect("index.jsp");
+        response.sendRedirect("profile.jsp?ok=You Details Updated Successfully");
         
         } else {
-            response.sendRedirect("login.jsp?err=Check Username Or Password");
+            response.sendRedirect("profile.jsp?err=Server Error");
         }
     }
 }

@@ -65,6 +65,37 @@ public class DB {
             return 0;
         }
     }
+   
+    public int checkEmail2(String email, String username) {
+        try {
+            Connection conn = this.conn();
+            Statement stmt = conn.createStatement();
+            
+            String query = "SELECT * FROM users WHERE email = '" + email + "'";
+            ResultSet rs = stmt.executeQuery(query);
+            int count = 0;
+            int foundUser = 0;
+            int others = 0;
+            
+            while (rs.next()) {
+                count++;
+                if (username.equals((String) rs.getString("username"))) {
+                    foundUser++;
+                } else {
+                    others++;
+                }
+            }
+            if (others > 0) {
+                return 0;
+            } else {
+                return 1;
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DB.class.getName()).log(Level.SEVERE, null, ex);
+            return 0;
+        }
+    }
     
     public int registerUser(String username, String password, String first_name, String last_name, String gender, String email) {
         String sql = "INSERT INTO users(username, email, password, first_name, last_name, gender) VALUES ('" + username + "', '" + email + "', '" + password + "', '" + first_name + "', '" + last_name + "', '" + gender + "')";
@@ -104,5 +135,28 @@ public class DB {
             Logger.getLogger(DB.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
+    }
+    
+    public HashMap updateUser(String username, String first_name, String last_name, String email, String gender) {
+        HashMap <String, String> userMap = new HashMap<>();
+       
+        String sql = "UPDATE users SET first_name = '" + first_name + "', last_name = '" + last_name + "', email = '" + email + "', gender = '" + gender + "' WHERE username = '" + username + "';";
+        int num = this.run_sql(sql);
+        
+        if (num > 0) {
+        userMap.put("username", username);
+        userMap.put("email", email);
+        userMap.put("first_name", first_name);
+        userMap.put("last_name", last_name);
+        userMap.put("gender", gender);
+        
+        return userMap;
+        }
+        
+        else {
+            return null;
+        }
+            
+        
     }
 }

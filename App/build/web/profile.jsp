@@ -1,19 +1,25 @@
 <%@page import="Config.Functions"%>
 <%@page import="java.util.HashMap"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <%
+    String role = (String) session.getAttribute("role");
+    if (role == null || !role.equals("user")) {
+        response.sendRedirect("index.jsp");
+        return;
+    }
+    
     String pageTitle = "My Profile";
     request.setAttribute("title", pageTitle);
 %>
+
 <jsp:include page="./SiteParts/dash_header.jsp" />
 <jsp:include page="./SiteParts/alerts.jsp" />   
 
-
-             <jsp:include page="./SiteParts/alerts.jsp" />   
              <%
              HashMap user = (HashMap) session.getAttribute("user");
              %>
-        <div class="container">
+        <div class="container p-0">
             <h3 class="text-center my-5 light-container-style py-3" style="margin: 0 !important;">Your Details</h3>
             <form class="row g-3 needs-validation light-container-style " method="post" action="ProfileEditServlet">
                 <div class="col-md-6">
