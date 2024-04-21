@@ -216,7 +216,52 @@ input[type="text"][readonly] {
     font-size: 0.875rem;
 }
 
-.brand-name-banner {
+/*SHOWCASE*/
+.image-holder {
+    max-height: 500px;
+    width: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.img-holder-img {
+    position: relative;
+    height: 100vh;
+/*    max-height: 100%;
+    max-width: 100%;*/
+    
+}
+.model-contents {
+    width: 50%;
+    height:500px;
+    z-index: 10;
+    flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+    padding: 40px;
+}
+.model-custom {
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
 
-
+@media screen and (max-width: 1200px) {
+    .model-custom {
+        flex-direction: column;
+    }
+    .image-holder {
+        width: 100%
+    }
+    .model-contents {
+        width: 100%;
+        height:auto;
+    }
+    .img-holder-img {
+        height: 60vw;
+    }
 }
