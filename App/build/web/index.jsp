@@ -7,12 +7,11 @@
 <jsp:include page="./SiteParts/alerts.jsp" />   
 
 <%
-
-String role = (String) session.getAttribute("role");
-if (role != null) { %>    
+    String role = (String) session.getAttribute("role");
+    if (role != null) { %>    
 <jsp:include page="./SiteParts/submenubar.jsp" />
- <%  } %>
+<%  }%>
 
 
- 
- <jsp:include page="./SiteParts/dash_footer.jsp" />   
+
+<jsp:include page="./SiteParts/dash_footer.jsp" />   

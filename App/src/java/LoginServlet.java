@@ -1,3 +1,4 @@
+
 import Config.DB;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -17,23 +18,22 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        
+
         DB db = new DB();
         HashMap user = db.loginUser(username, password);
 
         if (user != null) {
-        
-        HttpSession session = request.getSession();
-        session.setAttribute("user", user);
-        session.setAttribute("username", user.get("username"));
-        session.setAttribute("role", "user");
-        response.sendRedirect("index.jsp");
-        
+
+            HttpSession session = request.getSession();
+            session.setAttribute("user", user);
+            session.setAttribute("username", user.get("username"));
+            session.setAttribute("role", "user");
+            response.sendRedirect("index.jsp");
+
         } else {
             response.sendRedirect("login.jsp?err=Check Username Or Password");
         }
-         
-    }
 
+    }
 
 }

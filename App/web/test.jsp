@@ -7,10 +7,10 @@
     if (role == null || !role.equals("user")) {
         response.sendRedirect("index.jsp");
     }
-    
+
     String pageTitle = "My Profile";
     request.setAttribute("title", pageTitle);
-    
+
 
 %>
 <jsp:include page="./SiteParts/dash_footer.jsp" />   

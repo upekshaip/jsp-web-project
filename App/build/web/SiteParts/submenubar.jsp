@@ -6,12 +6,12 @@
     </div>
     <div>
         <%
-        String role = (String) session.getAttribute("role");
-        if (role != null && role.equals("admin")) {
-            %>
-            <a href="./admin.jsp" class="btn btn-success">Admin Panel</a>
-            <%
-        }
+            String role = (String) session.getAttribute("role");
+            if (role != null && role.equals("admin")) {
+        %>
+        <a href="./admin.jsp" class="btn btn-success">Admin Panel</a>
+        <%
+            }
         %>
         <a href="./orders.jsp" class="btn btn-warning ml-3">My Orders</a>
 
