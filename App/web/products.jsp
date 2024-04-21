@@ -110,7 +110,7 @@
                         <div>
                             <h4 class="price my-0"><%=price%> LKR</h4>
                             <%
-                    if (discount > 0) {%>
+                                if (discount > 0) {%>
                             <p class="discount-price my-0"><s><%=original_price%> LKR</s></p>                        
                                     <%
                                         }
@@ -119,14 +119,14 @@
                             <% } %>
 
                             <%
-                    if (in_stock) { %>
+                                if (in_stock) { %>
                             <p class="availability my-2">Availability: <span class="badge text-bg-success">Available</span></p>
                             <% } else { %>
                             <p class="availability my-2">Availability: <span class="badge text-bg-warning">Out Of Stock</span></p>
                             <% }%>
                             <div class="modal-footer p-0">
-                                <button type="button" class="btn btn-secondary mt-3" data-bs-dismiss="modal">Close</button>
                                 <button type="button" class="btn btn-warning mt-3">Add to cart</button>
+                                <button type="button" class="btn btn-secondary mt-3" data-bs-dismiss="modal">Close</button>
                             </div>
                         </div>
 

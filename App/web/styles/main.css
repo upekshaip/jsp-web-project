@@ -228,10 +228,10 @@ input[type="text"][readonly] {
 }
 .img-holder-img {
     position: relative;
-    height: 100vh;
-/*    max-height: 100%;
-    max-width: 100%;*/
-    
+    height: 74vh;
+    /*    max-height: 100%;
+        max-width: 100%;*/
+
 }
 .model-contents {
     width: 50%;
@@ -247,7 +247,7 @@ input[type="text"][readonly] {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    
+
 }
 
 @media screen and (max-width: 1200px) {
