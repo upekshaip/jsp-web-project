@@ -82,12 +82,21 @@
                 <p class="availability my-2">Availability: <span class="badge text-bg-warning">Out Of Stock</span></p>
                 <% }%>
 
-                <div class="d-grid gap-2 mt-3">
-                    <button class="btn btn-warning" <%=btn%> type="button">Add to Cart</button>
+                <form action="AddToCart" method="post" class="d-grid gap-2 mt-3">    
+                    <input type="hidden" name="id" value="<%=product_id%>">
+                    <input type="hidden" name="name" value="<%=name%>">
+                    <input type="hidden" name="description" value="<%=description%>">
+                    <input type="hidden" name="price" value="<%=price%>">
+                    <input type="hidden" name="old_price" value="<%=original_price%>">
+                    <input type="hidden" name="discount" value="<%=discount%>">
+                    <input type="hidden" name="photo" value="<%=photo%>">
+                    <input type="hidden" name="available_count" value="<%=available_count%>">
+                    <input type="hidden" name="brand" value="<%=brand%>">
+                    <button class="btn btn-warning" <%=btn%> type="submit">Add to Cart</button>
                     <button class="btn btn-outline-light" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal<%=product_id%>">
                         View More
                     </button>
-                </div>
+                </form>
             </div>
         </div>
     </div>
@@ -103,11 +112,12 @@
                         <img src="<%=photo%>" class="img-holder-img" alt="...">
                     </div>
                     <div class="bg-dark text-white model-contents">
-                        <div class="mb-5">
+                        <div class="mb-4">
                             <h5 class="card-title text-white"><%=name%></h5>
                             <p class="mt-3"><%=description%></p>
                         </div>
                         <div>
+                            <h4 class="mb-2"><span class="badge text-bg-primary" style="text-transform: uppercase;"><%=brand%></span></h4>
                             <h4 class="price my-0"><%=price%> LKR</h4>
                             <%
                                 if (discount > 0) {%>
@@ -124,10 +134,22 @@
                             <% } else { %>
                             <p class="availability my-2">Availability: <span class="badge text-bg-warning">Out Of Stock</span></p>
                             <% }%>
-                            <div class="modal-footer p-0">
-                                <button type="button" class="btn btn-warning mt-3">Add to cart</button>
+
+                            <form action="AddToCart" method="post" class="modal-footer p-0">    
+                                <input type="hidden" name="id" value="<%=product_id%>">
+                                <input type="hidden" name="name" value="<%=name%>">
+                                <input type="hidden" name="description" value="<%=description%>">
+                                <input type="hidden" name="price" value="<%=price%>">
+                                <input type="hidden" name="old_price" value="<%=original_price%>">
+                                <input type="hidden" name="discount" value="<%=discount%>">
+                                <input type="hidden" name="photo" value="<%=photo%>">
+                                <input type="hidden" name="available_count" value="<%=available_count%>">
+                                <input type="hidden" name="brand" value="<%=brand%>">
+                                <button class="btn btn-warning mt-3" <%=btn%> type="submit">Add to Cart</button>
                                 <button type="button" class="btn btn-secondary mt-3" data-bs-dismiss="modal">Close</button>
-                            </div>
+                            </form>
+
+
                         </div>
 
                     </div>

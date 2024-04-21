@@ -212,6 +212,10 @@ input[type="text"][readonly] {
 .discount {
     color: #04de36;
 }
+.discount-price {
+    color: var(--color-scale-gray-2);
+    
+}
 .availability {
     font-size: 0.875rem;
 }

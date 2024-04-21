@@ -120,7 +120,9 @@ public class DB {
             String _username = rs.getString("username");
             String _email = rs.getString("email");
             String gender = rs.getString("gender");
+            int uid = rs.getInt("uid");
 
+            userMap.put("uid", Integer.toString(uid));
             userMap.put("username", _username);
             userMap.put("email", _email);
             userMap.put("first_name", first_name);
