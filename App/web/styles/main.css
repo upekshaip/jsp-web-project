@@ -269,3 +269,6 @@ input[type="text"][readonly] {
         height: 60vw;
     }
 }
+td {
+    font-size: small;
+}

@@ -45,7 +45,6 @@ public class AddToCart extends HttpServlet {
         response.sendRedirect("./products.jsp?err=Item already added to the cart");  
         return;
         }
-        session.setAttribute("cart", cart);
         response.getWriter().println(cart);
         response.getWriter().println(session.getAttribute("user"));
         response.getWriter().println(cart.size());

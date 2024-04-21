@@ -39,6 +39,7 @@ public class Functions {
         item.put("available_count", available_count);
         item.put("brand", brand);
         item.put("photo", photo);
+        item.put("items", 1);
         cart.put(id, item);
 
         return cart;

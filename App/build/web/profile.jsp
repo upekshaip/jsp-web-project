@@ -11,9 +11,15 @@
 
     String pageTitle = "My Profile";
     request.setAttribute("title", pageTitle);
+    //    jambo
+    request.setAttribute("url", "./img/14.jpg");
+    request.setAttribute("topic", "YOU CAN BUY HIGH QUALITY WATCHES");
+    request.setAttribute("description", "This is the shop you are looking...");
 %>
 
 <jsp:include page="./SiteParts/dash_header.jsp" />
+<jsp:include page="./SiteParts/submenubar.jsp" />
+<jsp:include page="./SiteParts/jambo.jsp" />   
 <jsp:include page="./SiteParts/alerts.jsp" />   
 
 <%
