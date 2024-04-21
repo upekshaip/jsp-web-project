@@ -1,3 +1,10 @@
+<%@page import="java.util.HashMap"%>
+
+<%
+    HashMap<Integer, HashMap<String, Object>> cart = (HashMap<Integer, HashMap<String, Object>>) session.getAttribute("cart");
+    int cart_size = cart.size();
+%>
+
 <section class="defalt-container-style text-white d-flex justify-content-between align-items-center container">
     <div class="">
         <h4 style="margin:0; text-transform: uppercase;">
@@ -5,8 +12,7 @@
         </h4>
     </div>
     <div>
-        <%
-            String role = (String) session.getAttribute("role");
+        <%            String role = (String) session.getAttribute("role");
             if (role != null && role.equals("admin")) {
         %>
         <a href="./admin.jsp" class="btn btn-success">Admin Panel</a>
@@ -16,7 +22,7 @@
         <a href="./orders.jsp" class="btn btn-warning ml-3">My Orders</a>
 
         <a href="./cart.jsp" class="btn btn-primary">
-            My Cart <span class="badge text-bg-light">4</span>
+            My Cart <span class="badge text-bg-light"><%=cart_size %></span>
         </a>
     </div>
 </section>

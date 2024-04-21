@@ -1,6 +1,7 @@
 <%
     String url = (String) request.getAttribute("brand_url");
     String topic = (String) request.getAttribute("brand");
+    
 %>
 
 <section class="defalt-container-style text-white" style="padding:0; position:relative; background: url('./resources/img/6.jpg'); background-position: center; background-repeat: no-repeat; background-size: cover;">

@@ -2,6 +2,7 @@
 import Config.DB;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,11 +24,13 @@ public class LoginServlet extends HttpServlet {
         HashMap user = db.loginUser(username, password);
 
         if (user != null) {
-
+            HashMap<Integer, HashMap<String, Object>> cart = new HashMap<>();
+            
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
             session.setAttribute("username", user.get("username"));
             session.setAttribute("role", "user");
+            session.setAttribute("cart", cart);
             response.sendRedirect("index.jsp");
 
         } else {

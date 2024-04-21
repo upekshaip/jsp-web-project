@@ -1,5 +1,7 @@
+import Config.Functions;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,25 +20,36 @@ public class AddToCart extends HttpServlet {
         
         String name = request.getParameter("name");
         String description = request.getParameter("description");
-        String id = request.getParameter("id");
-        String price = request.getParameter("price");
-        String old_price = request.getParameter("old_price");
-        String discount = request.getParameter("discount");
+        int id = Integer.parseInt(request.getParameter("id"));
+        float price = Float.parseFloat(request.getParameter("price"));
+        float old_price = Float.parseFloat(request.getParameter("old_price"));
+        float discount = Float.parseFloat(request.getParameter("discount"));
         String photo = request.getParameter("photo");
-        String available_count = request.getParameter("available_count");
+        int available_count = Integer.parseInt(request.getParameter("available_count"));
         String brand = request.getParameter("brand");
         
         HttpSession session = request.getSession(false);
         String role = (String) session.getAttribute("role");
+        
         
         if (role == null) {
         response.sendRedirect("./login.jsp?err=Please Login to place orders");
         return;
         }
         
-        HashMap user = (HashMap) session.getAttribute("user");
-        int custommer_id = Integer.parseInt((String) user.get("uid"));
-        response.getWriter().println(custommer_id);
+        Functions func = new Functions();
+        HashMap<Integer, HashMap<String, Object>> cart = (HashMap<Integer, HashMap<String, Object>>) session.getAttribute("cart");
         
+        cart = func.addItemToCart(cart, id, name, price, old_price, discount, available_count, brand, photo);
+        if (cart == null) {
+        response.sendRedirect("./products.jsp?err=Item already added to the cart");  
+        return;
+        }
+        session.setAttribute("cart", cart);
+        response.getWriter().println(cart);
+        response.getWriter().println(session.getAttribute("user"));
+        response.getWriter().println(cart.size());
+        
+        response.sendRedirect("./products.jsp?ok=<i>" + name + "</i> added to the cart");  
     }
 }

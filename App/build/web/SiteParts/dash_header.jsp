@@ -41,7 +41,8 @@
                         HttpSession mySession = request.getSession(false);
                         String role = (String) mySession.getAttribute("role");
                         String username = (String) mySession.getAttribute("username");
-                        if ((role == "user" || role == "admin") && username != null) {
+                        
+                        if (username != null && role != null && (role.equals("user") || role.equals("admin"))) {
                     %>
                     <form class="d-flex" method="post" action="LogoutServlet">
                         <a href="profile.jsp" class="btn btn-warning me-2">My Profile</a>
