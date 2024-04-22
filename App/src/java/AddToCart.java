@@ -27,30 +27,19 @@ public class AddToCart extends HttpServlet {
         return;
         }
         
-        String name = request.getParameter("name");
-        String description = request.getParameter("description");
         int id = Integer.parseInt(request.getParameter("id"));
-        float price = Float.parseFloat(request.getParameter("price"));
-        float old_price = Float.parseFloat(request.getParameter("old_price"));
-        float discount = Float.parseFloat(request.getParameter("discount"));
-        String photo = request.getParameter("photo");
-        int available_count = Integer.parseInt(request.getParameter("available_count"));
-        String brand = request.getParameter("brand");
-        
         
         
         Functions func = new Functions();
         HashMap<Integer, HashMap<String, Object>> cart = (HashMap<Integer, HashMap<String, Object>>) session.getAttribute("cart");
         
-        cart = func.addItemToCart(cart, id, name, price, old_price, discount, available_count, brand, photo);
+        cart = func.addItemToCart(cart, id);
+        
         if (cart == null) {
         response.sendRedirect("./products.jsp?err=Item already added to the cart");  
         return;
         }
-        response.getWriter().println(cart);
-        response.getWriter().println(session.getAttribute("user"));
-        response.getWriter().println(cart.size());
         
-        response.sendRedirect("./products.jsp?ok=<i>" + name + "</i> added to the cart");  
+        response.sendRedirect("./products.jsp?ok=<i>" + Integer.toString(id) + "</i> added to the cart");  
     }
 }

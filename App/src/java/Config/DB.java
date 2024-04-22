@@ -171,4 +171,19 @@ public class DB {
             return null;
         }
     }
+    
+    public ResultSet getProduct(String id) {
+        try {
+            Connection conn = this.conn();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM `products` WHERE productId = '" + id + "';");
+            return rs;
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+    }
+    
+    
 }

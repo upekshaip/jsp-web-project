@@ -1,7 +1,12 @@
 package Config;
 
+import Test;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Functions {
 
@@ -24,24 +29,36 @@ public class Functions {
         return result;
     }
 
-    public HashMap<Integer, HashMap<String, Object>> addItemToCart(HashMap<Integer, HashMap<String, Object>> cart, int id, String name, float price, float old_price, float discount, int available_count, String brand, String photo) {
+    public HashMap<Integer, HashMap<String, Object>> addItemToCart(HashMap<Integer, HashMap<String, Object>> cart, int id) {
 
         if (cart.containsKey(id)) {
             return null;
         }
 
         HashMap<String, Object> item = new HashMap<>();
-        item.put("id", id);
-        item.put("name", name);
-        item.put("price", price);
-        item.put("old_price", old_price);
-        item.put("discount", discount);
-        item.put("available_count", available_count);
-        item.put("brand", brand);
-        item.put("photo", photo);
-        item.put("items", 1);
-        cart.put(id, item);
+        DB db = new DB();
 
-        return cart;
+        try {
+            ResultSet rs = db.getProduct(Integer.toString(id));
+            rs.next();
+            
+            float new_price = rs.getFloat("price") * (100 - rs.getFloat("discount")) / 100;
+            
+            item.put("id", rs.getInt("productId"));
+            item.put("name", rs.getString("name"));
+            item.put("price", new_price);
+            item.put("old_price", rs.getFloat("price"));
+            item.put("discount", rs.getFloat("discount"));
+            item.put("available_count", rs.getInt("availableCount"));
+            item.put("brand", rs.getString("shortDescription"));
+            item.put("photo", rs.getString("photo"));
+            item.put("items", 1);
+            cart.put(id, item);
+
+            return cart;
+
+        } catch (SQLException ex) {
+            return null;
+        }
     }
 }
