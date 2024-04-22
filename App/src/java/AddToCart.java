@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 public class AddToCart extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
         
@@ -40,6 +40,8 @@ public class AddToCart extends HttpServlet {
         return;
         }
         
-        response.sendRedirect("./products.jsp?ok=<i>" + Integer.toString(id) + "</i> added to the cart");  
+        PrintWriter out = response.getWriter();
+        out.println("{\"id\":" + (String)request.getParameter("id") +  "}");
+//        response.sendRedirect("./products.jsp?ok=<i>" + Integer.toString(id) + "</i> added to the cart");  
     }
 }

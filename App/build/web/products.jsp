@@ -1,3 +1,4 @@
+<%@page import="java.util.HashMap"%>
 <%@page import="Config.DB"%>
 <%@page import="Config.Config"%>
 <%@page import="java.sql.*"%>
@@ -16,6 +17,7 @@
 
 <%
     String role = (String) session.getAttribute("role");
+    HashMap<Integer, HashMap<String, Object>> cart = (HashMap<Integer, HashMap<String, Object>>) session.getAttribute("cart");
     if (role != null) { %>    
 <jsp:include page="./SiteParts/submenubar.jsp" />
 <%  } %>
@@ -56,6 +58,10 @@
                     price = price * (100 - discount) / 100;
                 }
 
+                int quantity = 0;
+                if (cart.containsKey(product_id)) {
+                quantity = (int)cart.get(product_id).get("items");
+        }
     %>
     <div class="col">
         <div class="card bg-dark">
@@ -82,21 +88,24 @@
                 <p class="availability my-2">Availability: <span class="badge text-bg-warning">Out Of Stock</span></p>
                 <% }%>
 
-                <form action="AddToCart" method="post" class="d-grid gap-2 mt-3">    
+                <div class="d-grid gap-2 mt-3">    
                     <input type="hidden" name="id" value="<%=product_id%>">
-                    <input type="hidden" name="name" value="<%=name%>">
-                    <input type="hidden" name="description" value="<%=description%>">
-                    <input type="hidden" name="price" value="<%=price%>">
-                    <input type="hidden" name="old_price" value="<%=original_price%>">
-                    <input type="hidden" name="discount" value="<%=discount%>">
-                    <input type="hidden" name="photo" value="<%=photo%>">
-                    <input type="hidden" name="available_count" value="<%=available_count%>">
-                    <input type="hidden" name="brand" value="<%=brand%>">
-                    <button class="btn btn-warning" <%=btn%> type="submit">Add to Cart</button>
+                    <input type="hidden" id="quantity_<%=product_id%>" value="<%=quantity%>">
+                    <%
+                        if (cart.containsKey(product_id)) {
+                    %>
+                    <button id="cart_button_<%=product_id%>" class="btn btn-danger" value='remove' type="button" onClick="removeFromCart('<%=product_id%>')">Remove from Cart</button>
+                    <%
+                    } else {%>
+
+                    <button id="cart_button_<%=product_id%>" class="btn btn-warning" <%=btn%> type="button" value='add' onClick="addToCart('<%=product_id%>')">Add to Cart</button>
+                    <%
+                        }
+                    %>
                     <button class="btn btn-outline-light" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal<%=product_id%>">
                         View More
                     </button>
-                </form>
+                </div>
             </div>
         </div>
     </div>
@@ -135,19 +144,20 @@
                             <p class="availability my-2">Availability: <span class="badge text-bg-warning">Out Of Stock</span></p>
                             <% }%>
 
-                            <form action="AddToCart" method="post" class="modal-footer p-0">    
+                            <div class="modal-footer p-0">    
                                 <input type="hidden" name="id" value="<%=product_id%>">
-                                <input type="hidden" name="name" value="<%=name%>">
-                                <input type="hidden" name="description" value="<%=description%>">
-                                <input type="hidden" name="price" value="<%=price%>">
-                                <input type="hidden" name="old_price" value="<%=original_price%>">
-                                <input type="hidden" name="discount" value="<%=discount%>">
-                                <input type="hidden" name="photo" value="<%=photo%>">
-                                <input type="hidden" name="available_count" value="<%=available_count%>">
-                                <input type="hidden" name="brand" value="<%=brand%>">
-                                <button class="btn btn-warning mt-3" <%=btn%> type="submit">Add to Cart</button>
-                                <button type="button" class="btn btn-secondary mt-3" data-bs-dismiss="modal">Close</button>
-                            </form>
+                                <%
+                                    if (cart.containsKey(product_id)) {
+                                %>
+                                <button id="cart_button2_<%=product_id%>" class="btn btn-danger" value='remove' type="button" onClick="removeFromCart('<%=product_id%>')">Remove from Cart</button>
+                                <% } else {%>
+
+                                <button id="cart_button2_<%=product_id%>" class="btn btn-warning" <%=btn%> type="button" value='add' onClick="addToCart('<%=product_id%>')">Add to Cart</button>
+                                <%
+                                    }
+                                %>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
 
 
                         </div>
