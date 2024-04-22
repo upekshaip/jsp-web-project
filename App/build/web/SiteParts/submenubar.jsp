@@ -2,7 +2,13 @@
 
 <%
     HashMap<Integer, HashMap<String, Object>> cart = (HashMap<Integer, HashMap<String, Object>>) session.getAttribute("cart");
-    int cart_size = cart.size();
+    int cart_size = 0;
+    if (cart.size() > 0) {
+        for (int key : cart.keySet()) {
+        HashMap value = cart.get(key);
+        cart_size += (int) value.get("items");
+        }
+    }
 %>
 
 <section class="defalt-container-style text-white d-flex justify-content-between align-items-center container">
@@ -22,7 +28,7 @@
         <a href="./orders.jsp" class="btn btn-warning ml-3">My Orders</a>
 
         <a href="./cart.jsp" class="btn btn-primary">
-            My Cart <span class="badge text-bg-light"><%=cart_size %></span>
+            My Cart <span id="cart_number" class="badge text-bg-light"><%=cart_size%></span>
         </a>
     </div>
 </section>

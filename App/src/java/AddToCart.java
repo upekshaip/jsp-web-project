@@ -18,6 +18,15 @@ public class AddToCart extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        
+        HttpSession session = request.getSession(false);
+        String role = (String) session.getAttribute("role");
+        
+        if (session == null || role == null) {
+        response.sendRedirect("./login.jsp?err=Please Login to place orders");
+        return;
+        }
+        
         String name = request.getParameter("name");
         String description = request.getParameter("description");
         int id = Integer.parseInt(request.getParameter("id"));
@@ -28,14 +37,7 @@ public class AddToCart extends HttpServlet {
         int available_count = Integer.parseInt(request.getParameter("available_count"));
         String brand = request.getParameter("brand");
         
-        HttpSession session = request.getSession(false);
-        String role = (String) session.getAttribute("role");
         
-        
-        if (role == null) {
-        response.sendRedirect("./login.jsp?err=Please Login to place orders");
-        return;
-        }
         
         Functions func = new Functions();
         HashMap<Integer, HashMap<String, Object>> cart = (HashMap<Integer, HashMap<String, Object>>) session.getAttribute("cart");

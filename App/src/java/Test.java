@@ -20,17 +20,8 @@ public class Test extends HttpServlet {
         response.setContentType("text/html");
 
         PrintWriter out = response.getWriter();
-
-//         DB db = new DB();
-//         HashMap user = db.updateUser("johndoe", "John", "Doe", "jd@gmail.com", "Male");
-//         out.print(user);
-//         out.println(user + "<br>");
-//         
-//         DB db1 = new DB();
-//         HashMap xx = db1.loginUser("asd@gmail.com", "@1234");
-        HttpSession session = request.getSession(false);
-        out.println(session.getAttribute("user"));
-        out.println(session.getAttribute("username"));
+        DB db = new DB();
+//        db.
 
     }
 

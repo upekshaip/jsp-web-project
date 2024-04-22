@@ -16,6 +16,12 @@ public class ProfileEditServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        HttpSession session = request.getSession(false);
+        if (session == null || session.getAttribute("role") == null) {
+            response.sendRedirect("./login.jsp?err=Please Login to place orders");
+            return;
+        }
 
         String username = request.getParameter("username");
         String first_name = request.getParameter("first_name");
@@ -33,7 +39,6 @@ public class ProfileEditServlet extends HttpServlet {
         HashMap user = db.updateUser(username, first_name, last_name, email, gender);
 
         if (user != null) {
-            HttpSession session = request.getSession(false);
             session.setAttribute("user", user);
             response.sendRedirect("profile.jsp?ok=You Details Updated Successfully");
 

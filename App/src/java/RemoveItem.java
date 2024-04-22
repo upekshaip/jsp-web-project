@@ -23,7 +23,7 @@ public class RemoveItem extends HttpServlet {
         HttpSession session = request.getSession(false);
         int id = Integer.parseInt(request.getParameter("id"));
 
-        if (session.getAttribute("role") == null) {
+        if (session == null || session.getAttribute("role") == null) {
             response.sendRedirect("./login.jsp?err=Please Login to place orders");
             return;
         }
