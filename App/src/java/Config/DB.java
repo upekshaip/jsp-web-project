@@ -128,7 +128,7 @@ public class DB {
             userMap.put("last_name", last_name);
             userMap.put("gender", gender);
 
-            if (first_name != null && last_name != null && _username != null && _email != null && gender != null) {
+            if (first_name != null && last_name != null && _username != null && _email != null && gender != null && uid > 0) {
                 return userMap;
             } else {
                 return null;
@@ -209,7 +209,6 @@ public class DB {
                 String name = (String) value.get("name");
                 String original = Float.toString((float) value.get("old_price"));
                 String discount = Float.toString((float) value.get("discount"));
-                String photo = (String) value.get("photo");
 
                 String sql = "INSERT INTO orders (username, userId, productId, quantity, itemPrice, status, productName, original, discount) VALUES ('" + username + "','" + my_user + "','" + id + "','" + items + "','" + price + "' , 'Pending', '" + name + "', '" + original + "', '" + discount + ");";
                 int x = this.run_sql(sql);

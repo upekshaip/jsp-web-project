@@ -39,6 +39,9 @@ public class PurchaseOrders extends HttpServlet {
             } else if (x == 0) {
                 response.sendRedirect("./cart.jsp?err=Please select at least one item");
                 return;
+            } else {
+                response.sendRedirect("./cart.jsp?err=Server Error");
+                return;
             }
 
         } else {

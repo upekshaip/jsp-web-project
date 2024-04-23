@@ -24,6 +24,7 @@ public class Test extends HttpServlet {
         
 
         PrintWriter out = response.getWriter();
-        out.println("hello");
+        
+        out.println(request.getSession(false).getAttribute("user"));
     }
 }

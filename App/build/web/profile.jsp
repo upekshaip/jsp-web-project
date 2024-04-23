@@ -4,7 +4,7 @@
 
 <%
     String role = (String) session.getAttribute("role");
-    if (role == null || !role.equals("user")) {
+    if (role == null || !(role.equals("user") || role.equals("admin"))) {
         response.sendRedirect("login.jsp?err=Please Login First");
         return;
     }

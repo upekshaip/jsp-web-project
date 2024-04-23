@@ -3,7 +3,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     String role = (String) session.getAttribute("role");
-    if (role == null || !role.equals("user")) {
+    if (role == null || !(role.equals("user") || role.equals("admin"))) {
         response.sendRedirect("index.jsp");
         return;
     }
