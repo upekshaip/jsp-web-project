@@ -83,7 +83,10 @@
         double original_price = rss.getDouble("original");
         double discount = rss.getDouble("discount");
         double price = rss.getDouble("itemPrice");
+        int quantity = rss.getInt("quantity");
         int pid = rss.getInt("productId");
+
+        double amount = price * quantity;
 
         ResultSet prs = db.getProduct(Integer.toString(pid));
         prs.next();
@@ -125,14 +128,14 @@
                     <div>
                         <p class="mb-2">Order ID: <span class="badge text-bg-light" style="text-transform: uppercase;"><%=order_id%></span></p>
                         <h4 class="mb-2"><span class="badge text-bg-primary" style="text-transform: uppercase;"><%=brand%></span></h4>
-                        <h4 class="price my-0"><%=price%> LKR (Purchesed Price)</h4>
-                        <%
-                            if (discount > 0) {%>
+                            <% if (discount > 0) {%>
                         <p class="discount-price my-0"><s><%=original_price%> LKR</s></p>                        
-                                <%
-                                    }
-                                    if (discount > 0) {
-                                %>
+                                <% }%>
+                        <h6 class="my-0"><%=price%> LKR x <%=quantity%></h6>
+                        <h3 class="price my-0"><%=amount %> LKR</h4>
+                        <%
+                            if (discount > 0) {
+                        %>
                         <p class="discount my-0"><%=discount%>% Off (Purchesed Discount)</p>   
                         <% } %>
 
