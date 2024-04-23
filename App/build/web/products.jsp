@@ -11,16 +11,17 @@
     request.setAttribute("url", "./img/14.jpg");
     request.setAttribute("topic", "YOU CAN BUY HIGH QUALITY WATCHES");
     request.setAttribute("description", "This is the shop you are looking...");
+    HashMap<Integer, HashMap<String, Object>> cart = new HashMap<>();
+    if (session != null) {
+    cart = (HashMap<Integer, HashMap<String, Object>>) session.getAttribute("cart");
+    }
 %>
 <jsp:include page="./SiteParts/dash_header.jsp" />
 <jsp:include page="./SiteParts/alerts.jsp" />   
 
 <%
     String role = (String) session.getAttribute("role");
-    HashMap<Integer, HashMap<String, Object>> cart = (HashMap<Integer, HashMap<String, Object>>) session.getAttribute("cart");
-    if (session != null || role != null) { %>    
-    HashMap<Integer, String> cart = new HashMap<>();
-            
+    if (role != null) { %>    
 <jsp:include page="./SiteParts/submenubar.jsp" />
 <%  } %>
 <jsp:include page="./SiteParts/jambo.jsp" />   
@@ -61,7 +62,7 @@
                 }
 
                 int quantity = 0;
-                if (cart.containsKey(product_id)) {
+                if (cart != null && cart.containsKey(product_id)) {
                 quantity = (int)cart.get(product_id).get("items");
         }
     %>
@@ -94,7 +95,7 @@
                     <input type="hidden" name="id" value="<%=product_id%>">
                     <input type="hidden" id="quantity_<%=product_id%>" value="<%=quantity%>">
                     <%
-                        if (cart.containsKey(product_id)) {
+                        if (cart != null && cart.containsKey(product_id)) {
                     %>
                     <button id="cart_button_<%=product_id%>" class="btn btn-danger" value='remove' type="button" onClick="removeFromCart('<%=product_id%>')">Remove from Cart</button>
                     <%
@@ -149,7 +150,7 @@
                             <div class="modal-footer p-0">    
                                 <input type="hidden" name="id" value="<%=product_id%>">
                                 <%
-                                    if (cart.containsKey(product_id)) {
+                                    if (cart != null && cart.containsKey(product_id)) {
                                 %>
                                 <button id="cart_button2_<%=product_id%>" class="btn btn-danger" value='remove' type="button" onClick="removeFromCart('<%=product_id%>')">Remove from Cart</button>
                                 <% } else {%>
