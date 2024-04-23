@@ -4,7 +4,6 @@ import java.sql.*;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.servlet.http.HttpSession;
 
 public class DB {
 
@@ -171,7 +170,20 @@ public class DB {
             return null;
         }
     }
-    
+
+    public ResultSet getOrders(String user_id) {
+        try {
+            Connection conn = this.conn();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM `orders` WHERE userId = " + user_id + ";");
+            return rs;
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+    }
+
     public ResultSet getProduct(String id) {
         try {
             Connection conn = this.conn();
@@ -184,6 +196,30 @@ public class DB {
             return null;
         }
     }
-    
-    
+
+    public int placeOrder(int user_id, String username, HashMap<Integer, HashMap<String, Object>> cart) {
+
+        if (cart.size() > 0) {
+            for (int key : cart.keySet()) {
+                HashMap value = cart.get(key);
+                String my_user = Integer.toString(user_id);
+                String id = Integer.toString((int) value.get("id"));
+                String items = Integer.toString((int) value.get("items"));
+                String price = Float.toString((float) value.get("price"));
+                String name = (String) value.get("name");
+
+                String sql = "INSERT INTO orders (username, userId, productId, quantity, itemPrice, status, productName) VALUES ('" + username + "','" + my_user + "','" + id + "','" + items + "','" + price + "' , 'Pending', '" + name + "');";
+                int x = this.run_sql(sql);
+//                ---- add the reduce items here ----
+
+                if (x <= 0) {
+                    return -1;
+                }
+            }
+            return 1;
+
+        } else {
+            return 0;
+        }
+    }
 }

@@ -132,16 +132,8 @@
                         <p>Final Price: </p>
                         <p><b class="text-end" id="final_price"><%=String.format("%.2f", final_price)%> LKR</b></p>
                     </div>
-                    <form>
-                        <%
-                            if (cart.size() > 0) {
-                                for (int key : cart.keySet()) {
-                                    HashMap value = cart.get(key);
-                        %>
-                        <input type="hidden" name="id_<%=value.get("id")%>" value="1">
-                        <% }
-                            }%>
-                        <button type="button" class="btn btn-warning" style="width: 100%;">Checkout</button>                        
+                    <form method="post" action="PurchaseOrders">
+                        <button type="submit" name="person" value="<%=((HashMap)session.getAttribute("user")).get("uid") %>" class="btn btn-warning" style="width: 100%;">Checkout</button>                        
                     </form>
                 </div>
                 <div class="">

@@ -26,14 +26,15 @@ public class Test extends HttpServlet {
         PrintWriter out = response.getWriter();
         DB db = new DB();
 
+        HttpSession session = request.getSession(false);
+        HashMap user = (HashMap) session.getAttribute("user");
+        ResultSet rs = db.getProduct((String) user.get("id"));
         try {
-            ResultSet rs = db.getProduct("100");
-            rs.next();
-            out.println(rs.getString("shortDescription"));
+            if (rs.next()) {
+                out.print(rs.getString("name"));
+            }
         } catch (SQLException ex) {
-            Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
+            
         }
 
     }
-
-}

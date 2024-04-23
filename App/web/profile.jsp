@@ -5,16 +5,16 @@
 <%
     String role = (String) session.getAttribute("role");
     if (role == null || !role.equals("user")) {
-        response.sendRedirect("index.jsp");
+        response.sendRedirect("login.jsp?err=Please Login First");
         return;
     }
 
     String pageTitle = "My Profile";
     request.setAttribute("title", pageTitle);
     //    jambo
-    request.setAttribute("url", "./img/14.jpg");
-    request.setAttribute("topic", "YOU CAN BUY HIGH QUALITY WATCHES");
-    request.setAttribute("description", "This is the shop you are looking...");
+    request.setAttribute("url", "./img/8.jpg");
+    request.setAttribute("topic", "CHANGE YOUR ACCOUNT DETAILS");
+    request.setAttribute("description", "You can change your user details in here.");
 %>
 
 <jsp:include page="./SiteParts/dash_header.jsp" />

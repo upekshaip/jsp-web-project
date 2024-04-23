@@ -30,6 +30,9 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("user", user);
             session.setAttribute("username", user.get("username"));
             session.setAttribute("role", "user");
+            if (user.get("username").equals("admin")) {
+            session.setAttribute("role", "admin");
+            }
             session.setAttribute("cart", cart);
             response.sendRedirect("index.jsp");
 

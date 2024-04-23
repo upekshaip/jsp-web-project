@@ -27,9 +27,13 @@
                         <li class="nav-item">
                             <a class="nav-link" href="./products.jsp">Products</a>
                         </li>
+                        <%
+                        if (session != null && (session.getAttribute("role") != null) ){
+                        %>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Orders</a>
+                            <a class="nav-link" href="./orders.jsp">Orders</a>
                         </li>
+                        <% } %>
                         <li class="nav-item">
                             <a class="nav-link" href="#">About Us</a>
                         </li>
