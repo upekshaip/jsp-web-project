@@ -62,83 +62,92 @@
 
 
     function addToCart(id) {
+        const log_msg = document.getElementById("log_mgs").value.trim();
         let _id = parseInt(id);
 
         const url = '<%=Config.ADD_TO_CART_API%>' + '?id=' + encodeURIComponent(id);
 
-        fetch(url)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.json(); // Parse response body as JSON
-                })
-                .then(data => {
-                    console.log('Success:', data);
-                    let btn = document.getElementById("cart_button_" + data["id"].toString());
-                    let btn2 = document.getElementById("cart_button2_" + data["id"].toString());
-                    if (btn) {
-                        btn.textContent = "Remove from Cart";
-                        btn.className = "btn btn-danger";
-                        btn.setAttribute("onClick", "removeFromCart('" + data["id"].toString() + "')");
+        if (log_msg == "logged_in") {
+            fetch(url)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json(); // Parse response body as JSON
+                    })
+                    .then(data => {
+                        console.log('Success:', data);
+                        let btn = document.getElementById("cart_button_" + data["id"].toString());
+                        let btn2 = document.getElementById("cart_button2_" + data["id"].toString());
+                        if (btn) {
+                            btn.textContent = "Remove from Cart";
+                            btn.className = "btn btn-danger";
+                            btn.setAttribute("onClick", "removeFromCart('" + data["id"].toString() + "')");
 
-                        btn2.textContent = "Remove from Cart";
-                        btn2.className = "btn btn-danger";
-                        btn2.setAttribute("onClick", "removeFromCart('" + data["id"].toString() + "')");
+                            btn2.textContent = "Remove from Cart";
+                            btn2.className = "btn btn-danger";
+                            btn2.setAttribute("onClick", "removeFromCart('" + data["id"].toString() + "')");
 
-                        let cart_number = document.getElementById("cart_number");
-                        let num = parseInt(cart_number.textContent);
-                        num++;
-                        cart_number.textContent = num.toString();
-                    } else {
-                        console.error('Error: Button not found.');
-                    }
-                    // Handle success response here if needed
-                }).catch(error => {
-            console.error('Error:', error);
-            alert('Error:', error);
-            // Handle error here if needed
-        });
+                            let cart_number = document.getElementById("cart_number");
+                            let num = parseInt(cart_number.textContent);
+                            num++;
+                            cart_number.textContent = num.toString();
+                        } else {
+                            console.error('Error: Button not found.');
+                        }
+                        // Handle success response here if needed
+                    }).catch(error => {
+                console.error('Error:', error);
+                alert('Error:', error);
+                // Handle error here if needed
+            });
+        } else {
+            window.location.href = "./login.jsp?err=Please login to place orders";
+        }
     }
 
     function removeFromCart(id) {
+        const log_msg = document.getElementById("log_mgs").value.trim();
         let _id = parseInt(id);
 
         const url = '<%=Config.REMOVE_FROM_CART_API%>' + '?id=' + encodeURIComponent(id);
+        if (log_msg == "logged_in") {
+            fetch(url)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json(); // Parse response body as JSON
+                    })
+                    .then(data => {
+                        console.log('Success:', data);
+                        let btn = document.getElementById("cart_button_" + data["id"].toString());
+                        let btn2 = document.getElementById("cart_button2_" + data["id"].toString());
 
-        fetch(url)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.json(); // Parse response body as JSON
-                })
-                .then(data => {
-                    console.log('Success:', data);
-                    let btn = document.getElementById("cart_button_" + data["id"].toString());
-                    let btn2 = document.getElementById("cart_button2_" + data["id"].toString());
-                    
-                    if (btn) {
-                        btn.textContent = "Add to Cart";
-                        btn.className = "btn btn-warning";
-                        btn.setAttribute("onClick", "addToCart('" + data["id"].toString() + "')");
-                        btn2.textContent = "Add to Cart";
-                        btn2.className = "btn btn-warning";
-                        btn2.setAttribute("onClick", "addToCart('" + data["id"].toString() + "')");
+                        if (btn) {
+                            btn.textContent = "Add to Cart";
+                            btn.className = "btn btn-warning";
+                            btn.setAttribute("onClick", "addToCart('" + data["id"].toString() + "')");
+                            btn2.textContent = "Add to Cart";
+                            btn2.className = "btn btn-warning";
+                            btn2.setAttribute("onClick", "addToCart('" + data["id"].toString() + "')");
 
-                        let cart_number = document.getElementById("cart_number");
-                        let num = parseInt(cart_number.textContent);
-                        num--;
-                        cart_number.textContent = num.toString();
-                    } else {
-                        console.error('Error: Button not found.');
-                    }
-                    // Handle success response here if needed
-                }).catch(error => {
-            console.error('Error:', error);
-            alert('Error:', error);
-            // Handle error here if needed
-        });
+                            let cart_number = document.getElementById("cart_number");
+                            let num = parseInt(cart_number.textContent);
+                            num--;
+                            cart_number.textContent = num.toString();
+                        } else {
+                            console.error('Error: Button not found.');
+                        }
+                        // Handle success response here if needed
+                    }).catch(error => {
+                console.error('Error:', error);
+                alert('Error:', error);
+                // Handle error here if needed
+            });
+        } else {
+            window.location.href = "./login.jsp?err=Please login to place orders";
+        }
     }
 </script>
 </body>

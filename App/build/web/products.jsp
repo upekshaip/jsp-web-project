@@ -11,16 +11,21 @@
     request.setAttribute("url", "./img/14.jpg");
     request.setAttribute("topic", "YOU CAN BUY HIGH QUALITY WATCHES");
     request.setAttribute("description", "This is the shop you are looking...");
+    
     HashMap<Integer, HashMap<String, Object>> cart = new HashMap<>();
-    if (session != null) {
+    String role = (String) session.getAttribute("role");
+    String msg = "logged_out";
+    if (role != null) {
+    msg = "logged_in";
     cart = (HashMap<Integer, HashMap<String, Object>>) session.getAttribute("cart");
     }
 %>
+<input type="hidden" id="log_mgs" value="<%=msg%>">
+
 <jsp:include page="./SiteParts/dash_header.jsp" />
 <jsp:include page="./SiteParts/alerts.jsp" />   
 
 <%
-    String role = (String) session.getAttribute("role");
     if (role != null) { %>    
 <jsp:include page="./SiteParts/submenubar.jsp" />
 <%  } %>
