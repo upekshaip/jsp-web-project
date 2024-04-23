@@ -210,8 +210,9 @@ public class DB {
                 String original = Float.toString((float) value.get("old_price"));
                 String discount = Float.toString((float) value.get("discount"));
 
-                String sql = "INSERT INTO orders (username, userId, productId, quantity, itemPrice, status, productName, original, discount) VALUES ('" + username + "','" + my_user + "','" + id + "','" + items + "','" + price + "' , 'Pending', '" + name + "', '" + original + "', '" + discount + ");";
+                String sql = "INSERT INTO `orders` (username, userId, productId, quantity, itemPrice, status, productName, original, discount) VALUES ('" + username + "','" + my_user + "','" + id + "','" + items + "','" + price + "' , 'Pending', '" + name + "', '" + original + "', '" + discount + "');";
                 int x = this.run_sql(sql);
+                System.out.println("DB CODE: " + Integer.toString(x));
 //                ---- add the reduce items here ----
 
                 if (x <= 0) {

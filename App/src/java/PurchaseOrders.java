@@ -35,6 +35,8 @@ public class PurchaseOrders extends HttpServlet {
             int x = db.placeOrder(uid, (String) user.get("username"), cart);
             if (x > 0) {
                 response.sendRedirect("./orders.jsp?ok=Order Completed");
+                HashMap<Integer, HashMap<String, Object>> new_cart = new HashMap<>();
+                session.setAttribute("cart", new_cart);
                 return;
             } else if (x == 0) {
                 response.sendRedirect("./cart.jsp?err=Please select at least one item");
