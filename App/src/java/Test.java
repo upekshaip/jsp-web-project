@@ -28,13 +28,15 @@ public class Test extends HttpServlet {
 
         HttpSession session = request.getSession(false);
         HashMap user = (HashMap) session.getAttribute("user");
-        ResultSet rs = db.getProduct((String) user.get("id"));
+        String user_id = (String) user.get("uid");
+        ResultSet rs = db.getOrders(user_id);
         try {
-            if (rs.next()) {
-                out.print(rs.getString("name"));
+            while (rs.next()) {
+                out.println(rs.getString("username"));
             }
+            out.print("asdasd");
         } catch (SQLException ex) {
-            
+            Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
+}

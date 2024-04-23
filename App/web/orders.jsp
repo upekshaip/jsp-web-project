@@ -26,7 +26,7 @@
     DB db = new DB();
 
     HashMap user = (HashMap) session.getAttribute("user");
-    ResultSet rs = db.getOrders((String) user.get("id"));
+    ResultSet rs = db.getOrders((String) user.get("uid"));
 %>
 
 
@@ -40,20 +40,117 @@
                 <th scope="col"></th>
             </tr>
         </thead>
-        <tbody>
+        <tbody style="vertical-align: middle;">
             <%
                 while (rs.next()) {
                     int order_id = rs.getInt("orderId");
-               
+                    String date = rs.getString("date");
+                    String status = rs.getString("status");
+                    String name = rs.getString("productName");
+
             %>
             <tr>
-                <th>3</th>
-                <td>Larry the Bird</td>
-                <td>@twitter</td>
+                <th><%=date%></th>
+                <td><%=name%></td>
+                <td>
+                    <%
+                        String color = "info";
+                        if (status.equals("Pending")) {
+                            color = "warning";
+                        } else if (status.equals("Complete")) {
+                            color = "success";
+                        }
+                    %>
+
+                    <span class="badge text-bg-<%=color%>"><%=status%></span>
+                </td>
+                <td><button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal<%=order_id%>">Details</button></td>
             </tr>
-            <% } %>
+            <% }%>
         </tbody>
     </table>
+
 </section>
+
+
+<%
+    while (rs.next()) {
+        int order_id = rs.getInt("orderId");
+        String date = rs.getString("date");
+        String status = rs.getString("status");
+        String name = rs.getString("productName");
+        double original_price = rs.getDouble("original");
+        double discount = rs.getDouble("discount");
+        double price = rs.getDouble("itemPrice");
+        int pid = rs.getInt("productId");
+
+        ResultSet prs = db.getProduct(Integer.toString(pid));
+        prs.next();
+        String description = prs.getString("description");
+        String photo = prs.getString("photo");
+        String brand = prs.getString("shortDescription");
+        int available_count = prs.getInt("availableCount");
+        boolean in_stock = false;
+        if (available_count > 0) {
+            in_stock = true;
+        }
+%>   
+
+
+<p><%=order_id%></p>
+
+<div class="modal fade" id="exampleModal<%=order_id%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content bg-dark">
+
+            <div class="modal-body model-custom">
+                <div class="image-holder">
+                    <img src="<%=photo%>" class="img-holder-img" alt="...">
+                </div>
+                <div class="bg-dark text-white model-contents">
+                    <div class="mb-4">
+                        <h5 class="card-title text-white"><%=name%></h5>
+                        <p class="mt-3"><%=description%></p>
+                    </div>
+                    <div>
+                        <h4 class="mb-2"><span class="badge text-bg-primary" style="text-transform: uppercase;"><%=brand%></span></h4>
+                        <h4 class="price my-0"><%=price%> LKR</h4>
+                        <%
+                            if (discount > 0) {%>
+                        <p class="discount-price my-0"><s><%=original_price%> LKR</s></p>                        
+                                <%
+                                    }
+                                    if (discount > 0) {%>
+                        <p class="discount my-0"><%=discount%>% Off</p>   
+                        <% } %>
+
+                        <%
+                            if (in_stock) { %>
+                        <p class="availability my-2">Availability: <span class="badge text-bg-success">Available</span></p>
+                        <% } else { %>
+                        <p class="availability my-2">Availability: <span class="badge text-bg-warning">Out Of Stock</span></p>
+                        <% }%>
+
+                        <div class="modal-footer p-0">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<%
+    }
+%>
+
+
+
+<!--MODEL-->
+
 
 <jsp:include page="./SiteParts/dash_footer.jsp" />   

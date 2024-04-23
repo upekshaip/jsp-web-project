@@ -207,8 +207,11 @@ public class DB {
                 String items = Integer.toString((int) value.get("items"));
                 String price = Float.toString((float) value.get("price"));
                 String name = (String) value.get("name");
+                String original = Float.toString((float) value.get("old_price"));
+                String discount = Float.toString((float) value.get("discount"));
+                String photo = (String) value.get("photo");
 
-                String sql = "INSERT INTO orders (username, userId, productId, quantity, itemPrice, status, productName) VALUES ('" + username + "','" + my_user + "','" + id + "','" + items + "','" + price + "' , 'Pending', '" + name + "');";
+                String sql = "INSERT INTO orders (username, userId, productId, quantity, itemPrice, status, productName, original, discount) VALUES ('" + username + "','" + my_user + "','" + id + "','" + items + "','" + price + "' , 'Pending', '" + name + "', '" + original + "', '" + discount + ");";
                 int x = this.run_sql(sql);
 //                ---- add the reduce items here ----
 

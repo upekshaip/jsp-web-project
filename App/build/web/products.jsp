@@ -18,7 +18,9 @@
 <%
     String role = (String) session.getAttribute("role");
     HashMap<Integer, HashMap<String, Object>> cart = (HashMap<Integer, HashMap<String, Object>>) session.getAttribute("cart");
-    if (role != null) { %>    
+    if (session != null || role != null) { %>    
+    HashMap<Integer, String> cart = new HashMap<>();
+            
 <jsp:include page="./SiteParts/submenubar.jsp" />
 <%  } %>
 <jsp:include page="./SiteParts/jambo.jsp" />   
