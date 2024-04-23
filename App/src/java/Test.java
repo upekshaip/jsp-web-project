@@ -25,6 +25,6 @@ public class Test extends HttpServlet {
 
         PrintWriter out = response.getWriter();
         
-        out.println(request.getSession(false).getAttribute("user"));
+        out.println(request.getSession(false).getAttribute("cart"));
     }
 }

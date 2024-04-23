@@ -197,6 +197,16 @@ public class DB {
         }
     }
 
+    public int reduceProductQuantity(String product_id, String new_count) {
+        String sql = "UPDATE products SET availableCount = '" + new_count + "' WHERE productId = '" + product_id + "';";
+        int num = this.run_sql(sql);
+        if (num > 0) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
     public int placeOrder(int user_id, String username, HashMap<Integer, HashMap<String, Object>> cart) {
 
         if (cart.size() > 0) {
@@ -205,17 +215,22 @@ public class DB {
                 String my_user = Integer.toString(user_id);
                 String id = Integer.toString((int) value.get("id"));
                 String items = Integer.toString((int) value.get("items"));
+                String all_count = Integer.toString((int) value.get("available_count"));
                 String price = Float.toString((float) value.get("price"));
                 String name = (String) value.get("name");
                 String original = Float.toString((float) value.get("old_price"));
                 String discount = Float.toString((float) value.get("discount"));
 
+                int new_item_count = Integer.parseInt(all_count) - Integer.parseInt(items);
                 String sql = "INSERT INTO `orders` (username, userId, productId, quantity, itemPrice, status, productName, original, discount) VALUES ('" + username + "','" + my_user + "','" + id + "','" + items + "','" + price + "' , 'Pending', '" + name + "', '" + original + "', '" + discount + "');";
                 int x = this.run_sql(sql);
-                System.out.println("DB CODE: " + Integer.toString(x));
-//                ---- add the reduce items here ----
-
                 if (x <= 0) {
+                    return -1;
+                }
+
+//                ---- add the reduce items here ----
+                int xx = this.reduceProductQuantity(id, Integer.toString(new_item_count));
+                if (xx == 0) {
                     return -1;
                 }
             }
