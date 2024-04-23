@@ -54,11 +54,13 @@
                 <td><%=name%></td>
                 <td>
                     <%
-                        String color = "info";
+                        String color = "light";
                         if (status.equals("Pending")) {
                             color = "warning";
                         } else if (status.equals("Complete")) {
                             color = "success";
+                        } else if (status.equals("Failed")) {
+                            color = "danger";
                         }
                     %>
 
@@ -98,11 +100,13 @@
         if (available_count > 0) {
             in_stock = true;
         }
-        String color = "info";
+        String color = "light";
         if (status.equals("Pending")) {
             color = "warning";
         } else if (status.equals("Complete")) {
             color = "success";
+        } else if (status.equals("Failed")) {
+            color = "danger";
         }
 %>   
 
@@ -132,23 +136,23 @@
                         <p class="discount-price my-0"><s><%=original_price%> LKR</s></p>                        
                                 <% }%>
                         <h6 class="my-0"><%=price%> LKR x <%=quantity%></h6>
-                        <h3 class="price my-0"><%=amount %> LKR</h4>
-                        <%
-                            if (discount > 0) {
-                        %>
-                        <p class="discount my-0"><%=discount%>% Off (Purchesed Discount)</p>   
-                        <% } %>
+                        <h3 class="price my-0"><%=amount%> LKR</h4>
+                            <%
+                                if (discount > 0) {
+                            %>
+                            <p class="discount my-0"><%=discount%>% Off (Purchesed Discount)</p>   
+                            <% } %>
 
-                        <%
-                            if (in_stock) {%>
-                        <p class="availability my-2">Availability: <span class="badge text-bg-success"><%=available_count%> Items Available</span></p>
-                        <% } else { %>
-                        <p class="availability my-2">Availability: <span class="badge text-bg-warning">Out Of Stock</span></p>
-                        <% }%>
+                            <%
+                                if (in_stock) {%>
+                            <p class="availability my-2">Availability: <span class="badge text-bg-success"><%=available_count%> Items Available</span></p>
+                            <% } else { %>
+                            <p class="availability my-2">Availability: <span class="badge text-bg-warning">Out Of Stock</span></p>
+                            <% }%>
 
-                        <div class="modal-footer p-0">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        </div>
+                            <div class="modal-footer p-0">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
 
 
                     </div>

@@ -183,6 +183,32 @@ public class DB {
             return null;
         }
     }
+    
+    public ResultSet getAllOrders() {
+        try {
+            Connection conn = this.conn();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM `orders`;");
+            return rs;
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+    }
+    
+    public ResultSet getAllUsers() {
+        try {
+            Connection conn = this.conn();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM `users`;");
+            return rs;
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+    }
 
     public ResultSet getProduct(String id) {
         try {
@@ -199,6 +225,16 @@ public class DB {
 
     public int reduceProductQuantity(String product_id, String new_count) {
         String sql = "UPDATE products SET availableCount = '" + new_count + "' WHERE productId = '" + product_id + "';";
+        int num = this.run_sql(sql);
+        if (num > 0) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+    
+    public int updateOrderStatus(String order_id, String status) {
+        String sql = "UPDATE `orders` SET status = '" + status + "' WHERE orderId = '" + order_id + "';";
         int num = this.run_sql(sql);
         if (num > 0) {
             return 1;

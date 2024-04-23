@@ -1,32 +1,9 @@
-<%@page import="java.util.HashMap"%>
 <%@page import="Config.DB"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.util.HashMap"%>
 <%@page import="java.sql.*"%>
 <%
-    String role = (String) session.getAttribute("role");
-    if (role == null || !(role.equals("user") || role.equals("admin"))) {
-        response.sendRedirect("login.jsp?err=Please Login First");
-        return;
-    }
-
-    String pageTitle = "My Orders";
-    request.setAttribute("title", pageTitle);
-    request.setAttribute("url", "./img/12.jpg");
-    request.setAttribute("topic", "SEE YOUR ORDERS");
-    request.setAttribute("description", "You can see all the products that you ordered.");
-%>
-<jsp:include page="./SiteParts/dash_header.jsp" />
-<jsp:include page="./SiteParts/alerts.jsp" />   
-
-<jsp:include page="./SiteParts/submenubar.jsp" />
-
-<jsp:include page="./SiteParts/jambo.jsp" /> 
-
-<%
     DB db = new DB();
-
-    HashMap user = (HashMap) session.getAttribute("user");
-    ResultSet rs = db.getOrders((String) user.get("uid"));
+    ResultSet rs = db.getAllOrders();
 %>
 
 
@@ -54,13 +31,11 @@
                 <td><%=name%></td>
                 <td>
                     <%
-                        String color = "light";
+                        String color = "danger";
                         if (status.equals("Pending")) {
                             color = "warning";
                         } else if (status.equals("Complete")) {
                             color = "success";
-                        } else if (status.equals("Failed")) {
-                            color = "danger";
                         }
                     %>
 
@@ -76,7 +51,7 @@
 
 
 <%
-    ResultSet rss = db.getOrders((String) user.get("uid"));
+    ResultSet rss = db.getAllOrders();
     while (rss.next()) {
         int order_id = rss.getInt("orderId");
         String date = rss.getString("date");
@@ -87,6 +62,8 @@
         double price = rss.getDouble("itemPrice");
         int quantity = rss.getInt("quantity");
         int pid = rss.getInt("productId");
+        int user_id = rss.getInt("userId");
+        String username = rss.getString("username");
 
         double amount = price * quantity;
 
@@ -100,13 +77,11 @@
         if (available_count > 0) {
             in_stock = true;
         }
-        String color = "light";
+        String color = "danger";
         if (status.equals("Pending")) {
             color = "warning";
         } else if (status.equals("Complete")) {
             color = "success";
-        } else if (status.equals("Failed")) {
-            color = "danger";
         }
 %>   
 
@@ -120,7 +95,7 @@
                     <img src="<%=photo%>" class="img-holder-img" alt="...">
                 </div>
                 <div class="bg-dark text-white model-contents">
-                    <div class="mb-4">
+                    <div class="mb-3">
 
                         <div class="mb-3 d-flex justify-content-between align-items-center">
                             <p class="m-0"><span class="badge text-bg-light" style="text-transform: uppercase;"><%=date%></span></p>
@@ -130,7 +105,8 @@
                         <p class="mt-3"><%=description%></p>
                     </div>
                     <div>
-                        <p class="mb-2">Order ID: <span class="badge text-bg-light" style="text-transform: uppercase;"><%=order_id%></span></p>
+                        <p class="m-0">Order ID: <span class="badge text-bg-light"><%=order_id%></span></p>
+                        <p class="mb-1">User ID: <span class="badge text-bg-light"><%=user_id%></span><span class="badge text-bg-light ms-1"><%=username%></span></p>
                         <h4 class="mb-2"><span class="badge text-bg-primary" style="text-transform: uppercase;"><%=brand%></span></h4>
                             <% if (discount > 0) {%>
                         <p class="discount-price my-0"><s><%=original_price%> LKR</s></p>                        
@@ -144,14 +120,20 @@
                             <% } %>
 
                             <%
-                                if (in_stock) {%>
+                            if (in_stock) {%>
                             <p class="availability my-2">Availability: <span class="badge text-bg-success"><%=available_count%> Items Available</span></p>
                             <% } else { %>
                             <p class="availability my-2">Availability: <span class="badge text-bg-warning">Out Of Stock</span></p>
                             <% }%>
 
-                            <div class="modal-footer p-0">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <div class="modal-footer p-0 d-flex justify-content-between align-items-center">
+                                <form action="ChangeOrderStatus" method="post">    
+                                    <input type="hidden" name="order_id" value="<%=order_id%>">
+                                    <button type="submit" name="status" value="Complete" class="btn btn-success btn-sm ms-0" data-bs-dismiss="modal">Complete</button>
+                                    <button type="submit" name="status" value="Pending" class="btn btn-warning mx-1 btn-sm" data-bs-dismiss="modal">Pending</submit>
+                                    <button type="submit" name="status" value="Failed" class="btn btn-danger mx-1 btn-sm" data-bs-dismiss="modal">Failed</button>
+                                </form>
+                                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
                             </div>
 
 
@@ -170,6 +152,3 @@
 
 
 <!--MODEL-->
-
-
-<jsp:include page="./SiteParts/dash_footer.jsp" />   

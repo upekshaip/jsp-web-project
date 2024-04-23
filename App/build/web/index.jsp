@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-    String pageTitle = "Index";
+    String pageTitle = "Home";
     request.setAttribute("title", pageTitle);
 %>
 <jsp:include page="./SiteParts/dash_header.jsp" />
