@@ -40,5 +40,3 @@ public class EditProduct extends HttpServlet {
     }
 
 }
-
-}
