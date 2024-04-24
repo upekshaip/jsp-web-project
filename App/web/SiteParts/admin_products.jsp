@@ -87,9 +87,9 @@
             %>
             <tr>
                 <th><%=rs.getInt("productId")%></th>
-                <th><p class="m-0"><%=rs.getString("name")%></p></th>
-                <th><p class="m-0"><%=rs.getString("shortDescription")%></p></th>
-                <th><button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#productmodel<%=rs.getInt("productId")%>">Details</button></th>
+                <td><p class="m-0"><%=rs.getString("name")%></p></td>
+                <td><p class="m-0"><%=rs.getString("shortDescription")%></p></td>
+                <td><button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#productmodel<%=rs.getInt("productId")%>">Details</button></td>
             </tr>
             <% }%>
 
