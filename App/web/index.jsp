@@ -12,7 +12,7 @@
 <jsp:include page="./SiteParts/submenubar.jsp" />
 <%  }%>
 
-
+<jsp:include page="./SiteParts/admin_products.jsp" />
 
 
 

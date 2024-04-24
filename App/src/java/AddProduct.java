@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet(urlPatterns = {"/ChangeOrderStatus"})
-public class ChangeOrderStatus extends HttpServlet {
+@WebServlet(urlPatterns = {"/AddProduct"})
+public class AddProduct extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -21,17 +21,23 @@ public class ChangeOrderStatus extends HttpServlet {
             response.sendRedirect("./login.jsp?err=Please Login to place orders");
             return;
         }
-        String order_id = request.getParameter("order_id").trim();
-        String status = request.getParameter("status").trim();
+        String product_name = request.getParameter("product_name").trim();
+        String brand = request.getParameter("brand").trim();
+        String description = request.getParameter("description").trim();
+        String price = request.getParameter("price").trim();
+        String discount = request.getParameter("discount").trim();
+        String items = request.getParameter("items").trim();
+        String photo = request.getParameter("photo").trim();
 
         DB db = new DB();
-        int res = db.updateOrderStatus(order_id, status);
+        int res = db.addProduct(product_name, brand, description, price, discount, items, photo);
         if (res > 0) {
-            response.sendRedirect("./admin.jsp?page=orders&ok=Status Changed Successfully");
+            response.sendRedirect("./admin.jsp?page=products&ok=Product added successfully");
             return;
         }
-        response.sendRedirect("./admin.jsp?page=orders&err=Server Error");
+        response.sendRedirect("./admin.jsp?page=products&err=Server Error");
 
     }
+}
 
 }

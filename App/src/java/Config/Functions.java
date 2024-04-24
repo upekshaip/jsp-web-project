@@ -1,6 +1,4 @@
 package Config;
-
-import Test;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -23,6 +21,22 @@ public class Functions {
                 result += text;
             } else {
                 String text = "<option value='" + genders[i] + "'" + ">" + genders[i] + "</option>";
+                result += text;
+            }
+        }
+        return result;
+    }
+    
+    public String setBrands(String gender) {
+        String[] brands = Config.BRANDS;
+
+        String result = "";
+        for (int i = 0; i < brands.length; i++) {
+            if (gender.equals(brands[i])) {
+                String text = "<option value='" + brands[i] + "' " + "selected" + ">" + brands[i] + "</option>";
+                result += text;
+            } else {
+                String text = "<option value='" + brands[i] + "'" + ">" + brands[i] + "</option>";
                 result += text;
             }
         }

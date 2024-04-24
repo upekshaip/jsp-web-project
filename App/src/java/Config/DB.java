@@ -183,7 +183,7 @@ public class DB {
             return null;
         }
     }
-    
+
     public ResultSet getAllOrders() {
         try {
             Connection conn = this.conn();
@@ -196,7 +196,7 @@ public class DB {
             return null;
         }
     }
-    
+
     public ResultSet getAllUsers() {
         try {
             Connection conn = this.conn();
@@ -232,7 +232,7 @@ public class DB {
             return 0;
         }
     }
-    
+
     public int updateOrderStatus(String order_id, String status) {
         String sql = "UPDATE `orders` SET status = '" + status + "' WHERE orderId = '" + order_id + "';";
         int num = this.run_sql(sql);
@@ -275,5 +275,22 @@ public class DB {
         } else {
             return 0;
         }
+    }
+
+    public int addProduct(String product_name, String brand, String description, String price, String discount, String items, String photo) {
+        String sql = "INSERT INTO products(name, description, shortDescription, price, discount, availableCount, photo) VALUES ('" + product_name + "', '" + description + "', '" + brand + "' , '" + price + "', '" + discount + "', '" + items + "', '" + photo + "')";
+        int x = this.run_sql(sql);
+        return x;
+    }
+
+    public int updateProduct(String product_id, String name, String description, String brand, String price, String discount, String items, String photo) {
+        String sql = "UPDATE products SET name = '" + name + "', description = '" + description + "', shortDescription = '" + brand + "', price = '" + price + "', discount = '" + discount + "', availableCount = '" + items + "', photo = '" + photo + "' WHERE productId = '" + product_id + "';";
+        int num = this.run_sql(sql);
+        if (num > 0) {
+            return 1;
+        } else {
+            return 0;
+        }
+
     }
 }

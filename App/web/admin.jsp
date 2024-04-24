@@ -19,9 +19,9 @@
 <section class="container defalt-container-style d-flex justify-content-between align-items-center">
     <h3 id="page_topic" class="m-0">Orders</h3>
     <div class="d-flex justify-content-center align-items-center">
-        <button id="button1" class="btn btn-primary mx-1">Orders</button>
-        <button id="button2" class="btn btn-primary mx-1">Products</button>
-        <button id="button3" class="btn btn-primary mx-1">Users</button>
+        <button id="button1" class="btn btn-primary mx-1 btn-sm">Orders</button>
+        <button id="button2" class="btn btn-primary mx-1 btn-sm">Products</button>
+        <button id="button3" class="btn btn-primary mx-1 btn-sm">Users</button>
     </div>
 </section>
 
