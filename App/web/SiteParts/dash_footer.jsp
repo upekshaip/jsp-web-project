@@ -89,9 +89,7 @@
                             btn2.setAttribute("onClick", "removeFromCart('" + data["id"].toString() + "')");
 
                             let cart_number = document.getElementById("cart_number");
-                            let num = parseInt(cart_number.textContent);
-                            num++;
-                            cart_number.textContent = num.toString();
+                            cart_number.textContent = data["total"].toString();
                         } else {
                             console.error('Error: Button not found.');
                         }
@@ -133,9 +131,7 @@
                             btn2.setAttribute("onClick", "addToCart('" + data["id"].toString() + "')");
 
                             let cart_number = document.getElementById("cart_number");
-                            let num = parseInt(cart_number.textContent);
-                            num--;
-                            cart_number.textContent = num.toString();
+                            cart_number.textContent = data["total"].toString();
                         } else {
                             console.error('Error: Button not found.');
                         }
