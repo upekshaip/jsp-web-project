@@ -214,7 +214,7 @@ input[type="text"][readonly] {
 }
 .discount-price {
     color: var(--color-scale-gray-2);
-    
+
 }
 .availability {
     font-size: 0.875rem;
@@ -271,4 +271,53 @@ input[type="text"][readonly] {
 }
 td {
     font-size: small;
+}
+
+
+/*INDEX PAGE*/
+.service-box {
+    position: relative;
+    height: 400px;
+    padding: 30px;
+    border: 2px solid var(--light);
+    border: 2px solid var(--color-scale-yellow-3);
+    margin: 10px;
+    /*height: auto;*/
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.service-img {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: -40px;
+    left: calc(50% - 50px);
+    background-color: var(--color-scale-orange-3);
+    border-radius: 50%;
+    padding: 15px;
+    border: 2px solid var(--color-scale-yellow-3);
+}
+.service-box:hover {
+    background-color: var(--color-scale-yellow-6);
+    color: white;
+}
+.service-contents {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+@media screen and (max-width: 1140px) {
+    .service-contents {
+        flex-direction: column;
+    }
+    .service-box {
+        margin-bottom: 40px;
+    }
+    .service-box {
+        height: auto;
+    }
 }
