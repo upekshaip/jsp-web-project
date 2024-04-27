@@ -1,3 +1,4 @@
+<%@page import="java.util.HashMap"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     String pageTitle = "Home";
@@ -12,11 +13,67 @@
 <jsp:include page="./SiteParts/submenubar.jsp" />
 <%  }%>
 
+<section class="mb-4 container defalt-container-style"
+         style="position:relative;background: url('./img/1.jpg'); background-position: center; background-repeat: no-repeat; background-size: cover; padding: 0;">
+    <div style="width:100%; height:100%; background-color: rgba(0, 0, 0, 0.4);">
+        <div class="text-white rounded" style="padding: 100px 50px">
+            <h1 style="color:white;">Hello,
+                <%
+                    if (role != null) {
+                %>
+                <%=((HashMap) session.getAttribute("user")).get("first_name")%>
+                <%
+                } else { %>
+                Welcome...
+                <% }%>
+            </h1>
+            <p>This is the best place to buy hand watches!</p>
+            <a href="./products.jsp" class="btn btn-warning mt-5" style="width: 120px"><b>Products</b></a>
+        </div>
+    </div>
+</section>
 
 
-<section class="container mt-3">
+<section class=" text-white p-0 container defalt-container-style">
+    <div class="title_info text-center mb-5 mt-5">
+        <h1 class="m-0">We Consider,</h1>
+        <p>Empowering Your Health Journey With QR Code technology</p>
+    </div>
+    <table class="table-sec">
+        <tr class="tr-index">
+            <td class="table-div image-container">
+                <img class="brand-img" src="img/3.jpg" alt="" width="100%">
+            </td>
+            <td class="table-div text-table-div">
+                <p>Quality</p>
+                <p>At WristWise, quality is our hallmark. Each hand watch featured on our platform undergoes meticulous inspection to meet our exacting standards. From exquisite craftsmanship to premium materials, we're dedicated to offering timepieces that epitomize luxury and precision, ensuring that every purchase is a testament to uncompromising quality.</p>
+            </td>
+        </tr>
+        <tr class="tr-index tr-invert">
+            <td class="table-div text-table-div">
+                <p>Durability</p>
+                <p>When it comes to durability, WristWise stands the test of time. Our curated selection of watches is built to endure the demands of daily life, crafted with durability at the forefront. Designed to accompany you through every adventure, our watches promise resilience and reliability, ensuring that they remain steadfast companions for years to come.</p>
+            </td>
+            <td class="table-div image-container">
+                <img class="brand-img" src="img/4.jpg" alt="" width="100%">
+            </td>
+        </tr>
+        <tr class="tr-index">
+            <td class="table-div image-container">
+                <img class="brand-img" src="img/5.jpg" alt="" width="100%">
+            </td>
+            <td class="table-div text-table-div">
+                <p>Reliability</p>
+                <p>WristWise is your trusted partner in time. We prioritize reliability in every aspect of our service, from secure transactions to dependable customer support. With us, you can shop with confidence, knowing that each purchase is backed by our unwavering commitment to your satisfaction. Experience peace of mind with WristWise, where reliability meets excellence.</p>
+            </td>
+        </tr>
+    </table>
+
+</section>
+
+<section class="container mt-5 p-0">
     <div class="title_info text-center mb-5">
-        <h1>Explore Our Services</h1>
+        <h1 class="m-0">Explore Our Services</h1>
         <p>Empowering Your Health Journey With QR Code technology</p>
     </div>
     <div class="service-contents">
@@ -49,12 +106,6 @@
             <p>Your QR code card is not just a card , it's a handy tool. Use it at government hospital clinics or
                 pharmacies to get quick access to your medical records.</p>
         </div>
-    </div>
-</section>
-
-<section class="container">
-    <div class="">
-
     </div>
 </section>
 

@@ -1,0 +1,144 @@
+footer {
+    margin: auto;
+    font-size: 13px;
+    padding: 0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: var(--color-navbar);
+    padding-bottom: 50px;
+}
+
+.footer>div>h5 {
+    margin-bottom: 25px;
+}
+
+.footer {
+    margin-top: 15px;
+    width: 80%;
+    padding: 10px 5%;
+    color: #efefef;
+    display: flex;
+    justify-content: space-around;
+}
+
+.logo img {
+    width: 200px;
+    height: 200px;
+}
+
+.footer div {
+    text-align: center;
+
+}
+
+.column-2-footer {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.column-2-footer a {
+    display: block;
+    text-decoration: none;
+    color: #efefef;
+    margin-bottom: 10px;
+    transition: ease 0.5s;
+}
+
+.column-2-footer>a:hover {
+    color: gold;
+}
+
+.footer div h3 {
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+    font-weight: 300;
+}
+
+@media screen and (max-width: 650px) {
+    .footer {
+        flex-direction: column-reverse;
+    }
+
+    .column-2-footer {
+        margin-top: 60px;
+    }
+}
+
+.social-content {
+    height: 30px;
+    width: 30px;
+    mask-position: center;
+    -webkit-mask-position: center;
+    transition: ease 0.5s;
+}
+
+.fb {
+    background-color: white;
+    mask: url(../img/icons8-facebook-50.svg);
+    -webkit-mask: url(../img/icons8-facebook.svg) no-repeat;
+}
+
+.yt {
+    background-color: white;
+    mask: url(../img/icons8-youtube.svg);
+    -webkit-mask: url(../img/icons8-youtube.svg) no-repeat;
+}
+
+.github {
+    background-color: white;
+    mask: url(../img/icons8-github.svg);
+    -webkit-mask: url(../img/icons8-github.svg) no-repeat;
+}
+
+.insta {
+    background-color: white;
+    mask: url(../img/icons8-instagram.svg);
+    -webkit-mask: url(../img/icons8-instagram.svg) no-repeat;
+}
+
+.ln {
+    background-color: white;
+    mask: url(../img/icons8-linkedin.svg);
+    -webkit-mask: url(../img/icons8-linkedin.svg) no-repeat;
+}
+
+.fb:hover {
+    background-color: gold;
+}
+
+.yt:hover {
+    background-color: gold;
+}
+
+.github:hover {
+    background-color: gold;
+}
+
+.insta:hover {
+    background-color: gold;
+}
+
+.ln:hover {
+    background-color: gold;
+}
+
+.social-table-th {
+    padding: 10px;
+    width: 20%;
+    text-align: center;
+    align-items: center;
+    height: auto;
+}
+
+.social-table {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

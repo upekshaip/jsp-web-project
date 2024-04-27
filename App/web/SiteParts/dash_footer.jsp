@@ -1,4 +1,74 @@
 <%@page import="Config.Config"%>
+
+<footer class="mt-5">
+
+    <div class="footer">
+        <div class="column-2-footer">
+            <h5>PAGES</h5>
+            <a href="./index.jsp">HOME</a>
+            <a href="./orders.jsp">MY ORDERS</a>
+            <a href="./cart.jsp">MY CART</a>
+            <a href="./about-us.jsp">ABOUT US</a>
+            <a href="./contact-us.jsp">CONTACT</a>
+        </div>
+    </div>
+    <section class="mt-3">
+        <table>
+            <tr>
+                <th class="social-table-th">
+                    <a href="">
+                        <div class="social-content fb"></div>
+                    </a>
+                </th>
+                <th class="social-table-th">
+                    <a href="">
+                        <div class="social-content github"></div>
+                    </a>
+                </th>
+                <th class="social-table-th">
+                    <a href="">
+                        <div class="social-content insta"></div>
+                    </a>
+
+                </th>
+                <th class="social-table-th">
+                    <a style="display: flex; justify-content: center; align-items: center;" href="">
+                        <div class="social-content yt"></div>
+                    </a>
+                </th>
+                <th class="social-table-th">
+                    <a href="">
+                        <div class="social-content ln"></div>
+                    </a>
+                </th>
+            </tr>
+        </table>
+    </section>
+    <div class="">
+        <p class="text-white mt-3 mb-0" style="font-family: Arial, Helvetica, sans-serif; text-align:center;">Developed by
+            Web
+            Group 46 @ NSBM
+            Green University</p>
+        <p class="text-white" style="font-family: Arial, Helvetica, sans-serif; text-align:center;">© Copyright 2023 |
+            All Rights Reserved.</p>
+    </div>
+
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <script>
 

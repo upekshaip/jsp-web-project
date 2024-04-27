@@ -1,3 +1,7 @@
+:root {
+    --background-frame-color: #ffc107;
+}
+
 body {
     background-color: var(--color-background-defalt);
     font-family: Arial, Helvetica, sans-serif;
@@ -280,7 +284,7 @@ td {
     height: 400px;
     padding: 30px;
     border: 2px solid var(--light);
-    border: 2px solid var(--color-scale-yellow-3);
+    border: 2px solid var(--background-frame-color);
     margin: 10px;
     /*height: auto;*/
     border-radius: 10px;
@@ -299,7 +303,7 @@ td {
     background-color: var(--color-scale-orange-3);
     border-radius: 50%;
     padding: 15px;
-    border: 2px solid var(--color-scale-yellow-3);
+    border: 2px solid var(--background-frame-color);
 }
 .service-box:hover {
     background-color: var(--color-scale-yellow-6);
@@ -320,4 +324,28 @@ td {
     .service-box {
         height: auto;
     }
+}
+
+@media screen and (max-width: 960px) {
+    .tr-index {
+        display: flex;
+        flex-direction: column;
+    }
+    .tr-index > td {
+        width: 100%;
+    }
+    .tr-invert {
+        flex-direction: column-reverse;
+
+    }
+}
+.table-div {
+    width: 50%;
+    text-align: center;
+    align-items: center;
+    height: auto;
+}
+
+.text-table-div {
+    padding: 10px;
 }
