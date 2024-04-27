@@ -291,6 +291,10 @@ public class DB {
         } else {
             return 0;
         }
-
+    }
+    public int contactus(String name, String email, String subject, String message) {
+        String sql = "INSERT INTO contacts(name, email, subject, message) VALUES ('" + name + "', '" + email + "', '" + subject + "', '" + message + "');";
+        int x = this.run_sql(sql);
+        return x;
     }
 }

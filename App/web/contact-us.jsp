@@ -17,22 +17,22 @@
 <section class="defalt-container-style container contact-section">
     <div class="contact-left">
         <h3 class="mb-4">Write Us</h3>
-        <form class="row g-3" method="post" action="contactus">
+        <form class="row g-3" method="post" action="ContactUs">
             <div class="col-md-12">
                 <label  class="form-label">Name</label>
-                <input type="text" class="form-control form-control-sm defalt-input-style text-white" required name="first_name" >
+                <input type="text" class="form-control form-control-sm defalt-input-style text-white" required name="name" >
             </div>
             <div class="col-md-12">
                 <label  class="form-label">Email</label>
-                <input type="email" class="form-control form-control-sm defalt-input-style text-white" required name="last_name">
+                <input type="email" class="form-control form-control-sm defalt-input-style text-white" required name="email">
             </div>
             <div class="col-md-12">
                 <label  class="form-label">Subject</label>
-                <input type="text" class="form-control form-control-sm defalt-input-style text-white" required name="email">
+                <input type="text" class="form-control form-control-sm defalt-input-style text-white" required name="subject">
             </div>
             <div class="col-md-12">
                 <label  class="form-label">Message</label>
-                <textarea class="form-control form-control-sm defalt-input-style text-white" id="exampleFormControlTextarea1" rows="3" required placeholder="Message"></textarea>
+                <textarea class="form-control form-control-sm defalt-input-style text-white" id="exampleFormControlTextarea1" name="message" rows="3" required placeholder="Message"></textarea>
             </div>
             <button class="btn btn-warning col-12 mt-3" type="submit">Contact</button>
         </form>

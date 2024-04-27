@@ -36,9 +36,6 @@
                         </li>
                         <% } %>
                         <li class="nav-item">
-                            <a class="nav-link" href="./about-us.jsp">About Us</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href="./contact-us.jsp">Contact</a>
                         </li>
                     </ul>

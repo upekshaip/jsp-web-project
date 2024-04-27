@@ -74,7 +74,6 @@
 <section class="container mt-5 p-0">
     <div class="title_info text-center mb-5">
         <h1 class="m-0">Explore Our Services</h1>
-        <p>Empowering Your Health Journey With QR Code technology</p>
     </div>
     <div class="service-contents">
         <div class="service-box text-center">
@@ -84,8 +83,7 @@
 
 
             <h4 class="mb-4 mt-5">Security & Privacy</h4>
-            <p class="p-0">Our QR code card uses a super-strong lock called encryption to make sure only the right people, like your
-                healthcare providers, can open and read your medical info.</p>
+            <p class="p-0">Security and privacy are paramount in everything we do. Our rigorous protocols and advanced encryption techniques ensure your data remains safe and confidential, allowing you to explore our services with peace of mind.</p>
 
         </div>
         <div class="service-box text-center">
@@ -93,8 +91,7 @@
                 <img src="img/service-2.png" class="img-fluid" alt="...">
             </div>
             <h4 class="mb-4 mt-5">Probability & Accessibility</h4>
-            <p>Our QR code card is designed to be small and light, just like your regular ID card. You can carry it in
-                your wallet or even on your phone – it's that simple!</p>
+            <p>Discover the reliability and accessibility woven into every facet of our services. With a focus on probability and accessibility, we ensure that our solutions are available whenever you need them, empowering you to navigate with confidence.</p>
         </div>
         <div class="service-box text-center">
             <div class="service-img">
@@ -103,8 +100,7 @@
             <h4 class="mb-4 mt-5">
                 Convenience In Access
             </h4>
-            <p>Your QR code card is not just a card , it's a handy tool. Use it at government hospital clinics or
-                pharmacies to get quick access to your medical records.</p>
+            <p>Experience unparalleled convenience with our streamlined access options. Whether you're on-the-go or at home, our services are designed to be effortlessly accessible, providing you with the freedom to explore and engage at your convenience.</p>
         </div>
     </div>
 </section>

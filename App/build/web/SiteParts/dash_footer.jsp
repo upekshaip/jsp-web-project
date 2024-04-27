@@ -45,7 +45,7 @@
         </table>
     </section>
     <div class="">
-        <p class="text-white mt-3 mb-0" style="font-family: Arial, Helvetica, sans-serif; text-align:center;">DEA Final Assignment</p>
+        <p class="text-white mt-3 mb-0" style="font-family: Arial, Helvetica, sans-serif; text-align:center;">DEA - 1 Final Assignment</p>
         <p class="text-white" style="font-family: Arial, Helvetica, sans-serif; text-align:center;">© Copyright 2024 |
             All Rights Reserved.</p>
     </div>
