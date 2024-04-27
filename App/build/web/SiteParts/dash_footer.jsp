@@ -45,11 +45,8 @@
         </table>
     </section>
     <div class="">
-        <p class="text-white mt-3 mb-0" style="font-family: Arial, Helvetica, sans-serif; text-align:center;">Developed by
-            Web
-            Group 46 @ NSBM
-            Green University</p>
-        <p class="text-white" style="font-family: Arial, Helvetica, sans-serif; text-align:center;">© Copyright 2023 |
+        <p class="text-white mt-3 mb-0" style="font-family: Arial, Helvetica, sans-serif; text-align:center;">DEA Final Assignment</p>
+        <p class="text-white" style="font-family: Arial, Helvetica, sans-serif; text-align:center;">© Copyright 2024 |
             All Rights Reserved.</p>
     </div>
 

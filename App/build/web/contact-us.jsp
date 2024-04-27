@@ -12,53 +12,29 @@
 <jsp:include page="./SiteParts/alerts.jsp" />   
 <jsp:include page="./SiteParts/jambo.jsp" />   
 
-<style>
-    .contact-section {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-    }
-    .contact-left, .contact-right {
-        width: 50%;
-        padding: 40px;
-    }
-    .contact-left {
-        border-right: 1px solid gray;
-        height: 100%;
-    }
-    @media screen and (max-width: 1000px) {
-        .contact-section {
-            flex-direction: column;
-        }
-        .contact-left, .contact-right {
-            width: 100%;
-            padding: 15px;
-        }
-    }
 
-</style>
 
 <section class="defalt-container-style container contact-section">
     <div class="contact-left">
-        <h3>Write Us</h3>
+        <h3 class="mb-4">Write Us</h3>
         <form class="row g-3" method="post" action="contactus">
             <div class="col-md-12">
                 <label  class="form-label">Name</label>
-                <input type="text" class="form-control form-control-sm defalt-input-style text-white" required name="first_name" placeholder="Name">
+                <input type="text" class="form-control form-control-sm defalt-input-style text-white" required name="first_name" >
             </div>
             <div class="col-md-12">
                 <label  class="form-label">Email</label>
-                <input type="email" class="form-control form-control-sm defalt-input-style text-white" required name="last_name" placeholder="Email">
+                <input type="email" class="form-control form-control-sm defalt-input-style text-white" required name="last_name">
             </div>
             <div class="col-md-12">
                 <label  class="form-label">Subject</label>
-                <input type="text" class="form-control form-control-sm defalt-input-style text-white" required name="email" placeholder="Subject">
+                <input type="text" class="form-control form-control-sm defalt-input-style text-white" required name="email">
             </div>
             <div class="col-md-12">
                 <label  class="form-label">Message</label>
                 <textarea class="form-control form-control-sm defalt-input-style text-white" id="exampleFormControlTextarea1" rows="3" required placeholder="Message"></textarea>
             </div>
-            <button class="btn btn-warning col-12 mt-5" type="submit">Sign Up</button>
+            <button class="btn btn-warning col-12 mt-3" type="submit">Contact</button>
         </form>
     </div>
     <div class="contact-right">
