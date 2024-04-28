@@ -1,0 +1,74 @@
+public class StockItem {
+
+String itemID;
+String itemDesc;
+Double price;
+int quantity;
+int reOrderLevel;
+//declaring my instance variables
+
+
+public StockItem (String itemID, String itemDesc, Double price, int quantity, int reOrderLevel)
+{       
+        this.itemID = itemID;
+        this.itemDesc = itemDesc;
+        this.price = price;
+        this.quantity = quantity;
+        this.reOrderLevel = reOrderLevel;
+}
+//declaring a contructor with 5 parameters for my instance variables
+
+
+
+public String getitemID() {
+    return itemID;
+}
+
+public String getitemDesc() {
+    return itemDesc;
+}
+
+public Double getprice() {
+    return price;
+}
+
+public int getquantity() {
+    return quantity;
+}
+
+public int getreOrderLevel() {
+    return reOrderLevel;
+}
+
+//creating my getters for all instance variables
+
+
+public void setprice(Double price) {
+    this.price = price;
+}
+
+public void setquantity(int quantity) {
+    this.quantity = quantity;
+}
+
+public void setreOrderLevel(int reOrderLevel) {
+    this.reOrderLevel = reOrderLevel;
+}
+
+//creating my setters for 3 instance variables
+
+
+public String toString()
+{
+    return getClass().getName() + "itemID: " + itemID + "itemDesc: " + itemDesc + "price:     "
+            + price + "quantity: " + quantity + "reOrderLevel: " + reOrderLevel;
+}
+
+
+//public String format() {}
+
+
+
+
+
+}
