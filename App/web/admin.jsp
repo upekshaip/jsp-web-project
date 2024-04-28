@@ -36,6 +36,65 @@
     <jsp:include page="./SiteParts/admin_users.jsp" />
 </div>
 
+<section class="container defalt-container-style d-flex justify-content-between align-items-center">
+    <h3 id="page_topic" class="m-0">Orders</h3>
+    <div class="d-flex justify-content-center align-items-center">
+        <input id="searchInput" type="text" placeholder="Search...">
+        <button id="button1" class="btn btn-primary mx-1 btn-sm">Orders</button>
+        <button id="button2" class="btn btn-primary mx-1 btn-sm">Products</button>
+        <button id="button3" class="btn btn-primary mx-1 btn-sm">Users</button>
+    </div>
+</section>
+
+<script>
+    // Function to show Section 1 and hide Section 2
+    function showSection1() {
+        // your existing code here
+    }
+
+    // Function to show Section 2 and hide Section 1
+    function showSection2() {
+        // your existing code here
+    }
+
+    function showSection3() {
+        // your existing code here
+    }
+
+    // Add event listeners to the buttons
+    document.getElementById("button1").addEventListener("click", showSection1);
+    document.getElementById("button2").addEventListener("click", showSection2);
+    document.getElementById("button3").addEventListener("click", showSection3);
+
+    // Search functionality
+    document.getElementById("searchInput").addEventListener("input", function() {
+        let searchText = this.value.toLowerCase();
+        let currentPage = document.getElementById("page_topic").innerText.toLowerCase();
+
+        if (currentPage === "orders") {
+            searchOrders(searchText);
+        } else if (currentPage === "products") {
+            searchProducts(searchText);
+        } else if (currentPage === "users") {
+            searchUsers(searchText);
+        }
+    });
+
+    function searchOrders(searchText) {
+        // AJAX call or any server-side logic to search orders
+        // Update the display with search results
+    }
+
+    function searchProducts(searchText) {
+        // AJAX call or any server-side logic to search products
+        // Update the display with search results
+    }
+
+    function searchUsers(searchText) {
+        // AJAX call or any server-side logic to search users
+        // Update the display with search results
+    }
+</script>
 
 <script>
     // Function to show Section 1 and hide Section 2
