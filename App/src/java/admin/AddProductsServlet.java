@@ -5,7 +5,7 @@ import java.sql.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
-public class AddProductServlet extends HttpServlet {
+public class AddProductsServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) 
       throws ServletException, IOException {
         Connection conn = null;
