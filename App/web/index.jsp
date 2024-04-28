@@ -132,6 +132,24 @@
     </div>
 </section>
 
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Homepage</title>
+</head>
+<body>
+    <div>
+        <h1>Welcome to our store!</h1>
+        
+        <!-- Display the image if it exists, otherwise display a placeholder -->
+        <img th:if="${imageExists}" th:src="${imageUrl}" alt="Product Image">
+        <img th:unless="${imageExists}" src="placeholder.jpg" alt="Placeholder Image">
+    </div>
+</body>
+</html>
+
+
 
 
 <jsp:include page="./SiteParts/dash_footer.jsp" />   
