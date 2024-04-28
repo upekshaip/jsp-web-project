@@ -17,6 +17,7 @@
 %>
 <jsp:include page="./SiteParts/dash_header.jsp" />
 <jsp:include page="./SiteParts/alerts.jsp" />   
+<jsp:include page="./SiteParts/alerts.jsp" />   
 
 <jsp:include page="./SiteParts/submenubar.jsp" />
 
