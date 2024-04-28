@@ -89,7 +89,14 @@
             searchUsers(searchText);
         }
     });
-
+    function connectOrders(searchText) {
+        // AddProductServlet connect any server-side logic to connect orders
+        // Update the display with connected results
+        document.getId("section1").style.dis = "block";
+        document.getId("section2").style.dis = "none";
+        document.getId("section3").style.dis = "none";
+    }
+    
     function searchOrders(searchText) {
         // AJAX call or any server-side logic to search orders
         // Update the display with search results
