@@ -144,5 +144,30 @@
     </div>
 </div>
 
+function changeAmount(itemId, action) {
+    var quantityField = document.getElementById("quantity_in_" + itemId);
+    var quantity = parseInt(quantityField.value);
+
+    if (isNaN(quantity) || quantity <= 0) {
+        alert("Please enter a valid quantity.");
+        return;
+    }
+
+    if (action === 'inc') {
+        quantity++;
+    } else if (action === 'dec' && quantity > 1) {
+        quantity--;
+    } else {
+        alert("Invalid action.");
+        return;
+    }
+
+    quantityField.value = quantity;
+
+    // Update the quantity display in the table
+    var quantityDisplay = document.getElementById("quantity_" + itemId);
+    quantityDisplay.textContent = quantity;
+}
+
 
 <jsp:include page="./SiteParts/dash_footer.jsp" />   
