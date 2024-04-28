@@ -132,8 +132,32 @@
     </div>
 </section>
 
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Homepage</title>
+</head>
+<body>
+    <div>
+        <h1>Welcome to our store!</h1>
+        <!-- Other homepage content goes here -->
+        
+        <!-- New Arrivals section -->
+        <div>
+            <h2>New Arrivals</h2>
+            <ul>
+                <!-- Thymeleaf loop to iterate over new arrivals -->
+                <li th:each="item : ${newArrivals}">
+                    <p th:text="${item.name}"></p>
+                    <!-- Add more details if needed -->
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
+
+
 <head>
     <meta charset="UTF-8">
     <title>Homepage</title>
