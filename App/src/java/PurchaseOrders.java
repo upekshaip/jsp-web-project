@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
+import java.util.List;
 
 @WebServlet("/PurchaseOrders")
 public class PurchaseOrders extends HttpServlet {
@@ -30,23 +31,25 @@ public class PurchaseOrders extends HttpServlet {
 
         // Check if the person matches the logged-in user
         if (Integer.toString(userId).equals(person)) {
-            // Retrieve cart from the session
-            HashMap<Integer, HashMap<String, Object>> cart = (HashMap<Integer, HashMap<String, Object>>) session.getAttribute("cart");
-
             DB db = new DB();
-            // Place the order
-            int result = db.placeOrder(userId, username, cart);
-            if (result > 0) {
-                // Order successfully placed
-                session.setAttribute("cart", new HashMap<>()); // Clear the cart
-                response.sendRedirect("./orders.jsp?ok=Order Completed");
-            } else if (result == 0) {
-                // No items selected for order
-                response.sendRedirect("./cart.jsp?err=Please select at least one item");
-            } else {
-                // Server error
-                response.sendRedirect("./cart.jsp?err=Server Error");
+            // Retrieve orders sorted by date
+            List<Order> orders = db.getOrdersByUserIdSortedByDate(userId);
+
+            if (orders.isEmpty()) {
+                // No orders found
+                response.sendRedirect("./cart.jsp?err=No orders found for this user");
+                return;
             }
+
+            // Process orders...
+            // For demonstration purposes, let's just print them out
+            for (Order order : orders) {
+                System.out.println(order);
+            }
+
+            // You can continue processing the orders as needed
+
+            response.sendRedirect("./orders.jsp?ok=Orders Retrieved Successfully");
         } else {
             // Person parameter does not match the logged-in user
             response.sendRedirect("./index.jsp");
