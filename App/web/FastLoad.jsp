@@ -27,10 +27,9 @@
         document.addEventListener("DOMContentLoaded", function() {
             var lazyImages = document.querySelectorAll('img.lazy');
             var options = {
-                rootMargin: '0px 0px 50px 0px', // Adjust root margin as needed
+                rootMargin: '0px 0px 51px 0px', // Adjust root margin as needed
                 threshold: 0.1
             };
-
             var lazyLoad = function(entries, observer) {
                 entries.forEach(function(entry) {
                     if (entry.isIntersecting) {
@@ -42,7 +41,6 @@
                 });
             };
 
-            
             });
         });
     </script>
