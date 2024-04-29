@@ -5,7 +5,6 @@ private StockList stock = null;
 
 public StockListInterface(StockList stock){}
 
-// Displays main menu and gets valid option from user
 public void doMenu()
 {
     System.out.println("StockList Main Menu");
@@ -23,8 +22,6 @@ public void doMenu()
 }
 
 
-// Obtain input for stock list operation
-// and invoke operation 
 
 private void doAddItem(StockItem item) 
 {
