@@ -9,13 +9,12 @@
             display: block;
             width: 100%;
             height: auto;
-            min-height: 200px; /* Set minimum height to avoid layout shifts */
-            background-color: #f0f0f0; /* Placeholder color */
+            min-height: 200px; 
+            background-color: #f0f0f0; 
         }
     </style>
 </head>
 <body>
-    <h1>Lazy Loading Example</h1>
     
     <!-- Placeholder image -->
     <img class="lazy" data-src="placeholder.jpg" alt="Placeholder Image">
@@ -43,9 +42,7 @@
                 });
             };
 
-            var observer = new IntersectionObserver(lazyLoad, options);
-            lazyImages.forEach(function(image) {
-                observer.observe(image);
+            
             });
         });
     </script>
