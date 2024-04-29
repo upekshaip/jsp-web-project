@@ -19,7 +19,7 @@ public class ProfileEditServlet extends HttpServlet {
         
         HttpSession session = request.getSession(false);
         if (session == null || session.getAttribute("role") == null) {
-            response.sendRedirect("./login.jsp?err=Please Login to place orders");
+            response.sendRedirect("./login.jsp?err=Please Login to place orders!!");
             return;
         }
 
@@ -32,7 +32,7 @@ public class ProfileEditServlet extends HttpServlet {
         DB db = new DB();
 
         if (db.checkEmail2(email, username) == 0) {
-            response.sendRedirect("profile.jsp?err=Email Alredy Exists. Try Another One");
+            response.sendRedirect("profile.jsp?err=Email Alredy Exists. Try Another One!!");
             return;
         }
 
@@ -40,7 +40,7 @@ public class ProfileEditServlet extends HttpServlet {
 
         if (user != null) {
             session.setAttribute("user", user);
-            response.sendRedirect("profile.jsp?ok=You Details Updated Successfully");
+            response.sendRedirect("profile.jsp?ok=You Details Updated Successfully!!");
 
         } else {
             response.sendRedirect("profile.jsp?err=Server Error");
