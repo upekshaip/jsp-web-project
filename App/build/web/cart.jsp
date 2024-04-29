@@ -143,7 +143,7 @@
         </div>
     </div>
 </div>
-
+<script>
 function changeAmount(itemId, action) {
     var quantityField = document.getElementById("quantity_in_" + itemId);
     var quantity = parseInt(quantityField.value);
