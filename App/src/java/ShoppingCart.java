@@ -26,7 +26,9 @@ public class ShoppingCart {
         }
         discountCode = code;
         double discount = totalPrice * discountPercentage / 100;
-        discountAmount = Math.min(discount, totalPrice); // Apply discount, but not exceeding total price
+        discountAmount = Math.min(discount, totalPrice); 
+        
+        // Apply discount, but not exceeding total price
         totalPrice -= discountAmount;
         System.out.println("Discount applied successfully.");
     }
@@ -46,7 +48,6 @@ public class ShoppingCart {
 
         System.out.println("Total price before discount: $" + cart.getTotalPrice());
 
-        // Apply discount code
         cart.applyDiscount("DISCOUNT25", 25);
 
         System.out.println("Total price after discount: $" + cart.getTotalPrice());
