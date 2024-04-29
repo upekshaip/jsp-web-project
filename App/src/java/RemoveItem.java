@@ -10,8 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- *
- * @author ASUS
+ 
  */
 @WebServlet(urlPatterns = {"/RemoveItem"})
 public class RemoveItem extends HttpServlet {
