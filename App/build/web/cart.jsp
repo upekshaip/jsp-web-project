@@ -160,10 +160,8 @@ function changeAmount(itemId, action) {
         alert("Invalid action.");
         return;
     }
-
     quantityField.value = quantity;
-
-    // Update the quantity display in the table
+    // Update the quantity display in the table.
     var quantityDisplay = document.getElementById("quantity_" + itemId);
     quantityDisplay.textContent = quantity;
 }
