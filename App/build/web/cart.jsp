@@ -168,5 +168,4 @@ function changeAmount(itemId, action) {
     var quantityDisplay = document.getElementById("quantity_" + itemId);
     quantityDisplay.textContent = quantity;
 }
-
 <jsp:include page="./SiteParts/dash_footer.jsp" />   
