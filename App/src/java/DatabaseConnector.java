@@ -7,9 +7,9 @@ public class DatabaseConnector {
     public static Connection connectToDatabase() {
         Connection connection = null;
         try {
-            String url = "jdbc:sql://http:3306/java_web";
-            String user = "johndoe";
-            String password = "@1234";
+            String url = "jdbc:sql://http:/java";
+            String user = "john";
+            String password = "@1";
 
             connection = DriverManager.getConnection(url, user, password);
             System.out.println("Connected to the database successfully!");
