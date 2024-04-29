@@ -24,7 +24,7 @@
                 <%=((HashMap) session.getAttribute("user")).get("first_name")%>
                 <%
                 } else { %>
-                Welcome...
+                Welcome..
                 <% }%>
             </h1>
             <p>This is the best place to buy hand watches!</p>
@@ -41,7 +41,7 @@
     <table class="table-sec">
         <tr class="tr-index">
             <td class="table-div image-container">
-                <img class="brand-img" src="img/3.jpg" alt="" width="100%">
+                <img class="brand-img" src="img/3.jpg" alt="Rolex" width="100%">
             </td>
             <td class="table-div text-table-div p-3">
                 <h3>Quality</h3>
