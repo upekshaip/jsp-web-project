@@ -17,7 +17,7 @@
 
 
 <section class="container defalt-container-style d-flex justify-content-between align-items-center">
-    <h3 id="page_topic" class="m-0">Orders</h3>
+    <h2 id="page_topic" class="m-0">Orders</h2>
     <div class="d-flex justify-content-center align-items-center">
         <button id="button1" class="btn btn-primary mx-1 btn-sm">Orders</button>
         <button id="button2" class="btn btn-primary mx-1 btn-sm">Products</button>
@@ -80,7 +80,6 @@
     document.getElementById("searchInput").addEventListener("input", function() {
         let searchText = this.value.toLowerCase();
         let currentPage = document.getElementById("page_topic").innerText.toLowerCase();
-
         if (currentPage === "orders") {
             searchOrders(searchText);
         } else if (currentPage === "products") {
@@ -118,16 +117,13 @@
     function showSection1() {
         // your existing code here
     }
-
     // Function to show Section 2 and hide Section 1
     function showSection2() {
         // your existing code here
     }
-
     function showSection3() {
         // your existing code here
     }
-
     // Add event listeners to the buttons
     document.getElementById("button1").addEventListener("click", showSection1);
     document.getElementById("button2").addEventListener("click", showSection2);
@@ -203,7 +199,6 @@
             pg_number = 3;
         }
     %>
-
     window.onload = function () {
         showSection<%=pg_number%>();
     };

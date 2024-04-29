@@ -10,7 +10,6 @@ import java.text.SimpleDateFormat;
 
 @WebServlet(urlPatterns = {"/OrderDate"})
 public class OrderDate extends HttpServlet {
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -21,13 +20,12 @@ public class OrderDate extends HttpServlet {
         dispatcher.forward(request, response);
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String formattedOrderDate = dateFormat.format(orderDate);
-
+   
         request.setAttribute("orderDate", formattedOrderDate);
-
     }
-
     private void processRequest(HttpServletRequest request, HttpServletResponse response) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException("Not supported yet.");
     }
-
+  
 }
+                                                                                                                            

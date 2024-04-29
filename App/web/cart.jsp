@@ -40,7 +40,6 @@
     float final_price = 0;
 %>
 
-
 <div class="container mt-5">
     <div class="row">
         <div class="col-lg-8">
@@ -161,10 +160,8 @@ function changeAmount(itemId, action) {
         alert("Invalid action.");
         return;
     }
-
     quantityField.value = quantity;
-
-    // Update the quantity display in the table
+    // Update the quantity display in the table.
     var quantityDisplay = document.getElementById("quantity_" + itemId);
     quantityDisplay.textContent = quantity;
 }
