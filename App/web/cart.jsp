@@ -40,7 +40,6 @@
     float final_price = 0;
 %>
 
-
 <div class="container mt-5">
     <div class="row">
         <div class="col-lg-8">
