@@ -9,7 +9,7 @@
 
 <section class="signup-content d-felx justify-center align-items-center">
     <div class="signup-left">
-        <img src="./img/2.jpg" alt="" style="height: 100%; width: auto; opacity: 1;">
+        <img src="./img/2.jpg" alt="" style="height: 100%; width: auto; opacity: 1.5;">
     </div>
 
     <div class="signup-right">
@@ -30,12 +30,9 @@
             </form>
 
             <div class="text-white light-container-style">
-                <p style="text-align: center; margin: 0; font-size: 14px;">Don't have an account? <a href="./signup.jsp">Sign Up</a></p>
+                <p style="text-align: center; margin: 0; font-size: 14px;">Don't have an account? Create one Now... <a href="./signup.jsp">Sign Up</a></p>
             </div>
         </div>
     </div>
-
-
-
 
     <jsp:include page="./SiteParts/footer.jsp" />   
