@@ -15,7 +15,7 @@
 
         if (session != null) {
             session.invalidate(); // Invalidate the session, effectively logging out the admin
-            response.sendRedirect("adminLogin.jsp"); // Redirect to admin login page
+            response.sendRedirect("home.jsp"); // Redirect to home page
         } else {
             // If session doesn't exist, display a message
             out.println("<p>Session does not exist. You are already logged out.</p>");
