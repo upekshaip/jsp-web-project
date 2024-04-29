@@ -28,25 +28,12 @@ public class ProfileEditServlet extends HttpServlet {
 
         DB db = new DB();
 
-<<<<<<< HEAD
         if (db.isEmailTaken(email, username)) {
             response.sendRedirect("profile.jsp?err=Email Already Exists. Try Another One");
             return;
         }
 
         HashMap<String, String> updatedUser = db.updateUser(username, firstName, lastName, email, gender);
-=======
-        if (db.checkEmail2(email, username) == 0) {
-            response.sendRedirect("profile.jsp?err=Email Alredy Exists. Try Another One!!");
-            return;
-        }
-
-        HashMap user = db.updateUser(username, first_name, last_name, email, gender);
-
-        if (user != null) {
-            session.setAttribute("user", user);
-            response.sendRedirect("profile.jsp?ok=You Details Updated Successfully!!");
->>>>>>> ff8908a9fccdd8ebf825f81bfe8cd654d147f3c2
 
         if (updatedUser != null) {
             session.setAttribute("user", updatedUser);
