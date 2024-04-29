@@ -11,13 +11,13 @@
     <c:if test="${empty wishlist}">
         <p>Your Wishlist is empty.</p>
     </c:if>
-    <c:forEach var="product" items="${wishlist}">
+    <c:forEach var="items" items="${wishlist}">
         <div>
             <h2>${product.name}</h2>
             <p>${product.description}</p>
             <form action="removeFromWishlist" method="post">
-                <input type="hidden" name="productId" value="${product.id}">
-                <input type="submit" value="Remove from Wishlist">
+                <input type="" name="productId" value="${product.id}">
+                <input type="" value="Remove from Wishlist">
             </form>
         </div>
     </c:forEach>
