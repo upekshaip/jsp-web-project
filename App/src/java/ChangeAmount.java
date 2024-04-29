@@ -1,4 +1,3 @@
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
@@ -9,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet(urlPatterns = {"/ChangeAmount"})
+@WebServlet("/ChangeAmount")
 public class ChangeAmount extends HttpServlet {
 
     @Override
@@ -19,38 +18,42 @@ public class ChangeAmount extends HttpServlet {
         HttpSession session = request.getSession(false);
         PrintWriter out = response.getWriter();
 
-        String id = (String) request.getParameter("id");
-        String method = (String) request.getParameter("method");
+        String id = request.getParameter("id");
+        String method = request.getParameter("method");
 
         if (session == null || session.getAttribute("role") == null) {
             response.sendRedirect("./login.jsp?err=Please Login to place orders");
+            return;
         }
+
         if (id != null && method != null) {
             HashMap<Integer, HashMap<String, Object>> cart = (HashMap<Integer, HashMap<String, Object>>) session.getAttribute("cart");
 
-            int product_id = Integer.parseInt(id);
+            int productId = Integer.parseInt(id);
 
-            if (method.equals("inc")) {
-                int item_count = (int) cart.get(product_id).get("items");
+            if (cart.containsKey(productId)) {
+                int itemCount = (int) cart.get(productId).get("items");
+                int availableCount = (int) cart.get(productId).get("available_count");
 
-                if ((int) cart.get(product_id).get("available_count") > item_count) {
-                    item_count++;
-                    cart.get(product_id).put("items", item_count);
-                    out.println("{\"id\":" + id + ", \"value\":" + item_count + "}");
+                if ("inc".equals(method) && availableCount > itemCount) {
+                    itemCount++;
+                    cart.get(productId).put("items", itemCount);
+                    out.println("{\"id\":" + id + ", \"value\":" + itemCount + "}");
+                } else if ("dec".equals(method) && itemCount > 1) {
+                    itemCount--;
+                    cart.get(productId).put("items", itemCount);
+                    out.println("{\"id\":" + id + ", \"value\":" + itemCount + "}");
                 } else {
-                    out.println("{\"id\":" + id + ", \"value\":" + item_count + "}");
+                    // No change in item count
+                    out.println("{\"id\":" + id + ", \"value\":" + itemCount + "}");
                 }
-
-            } else if (method.equals("dec")) {
-                int item_count = (int) cart.get(product_id).get("items");
-                if (item_count > 1) {
-                    item_count = item_count - 1;
-                    cart.get(product_id).put("items", item_count);
-                    out.println("{\"id\":" + id + ", \"value\":" + item_count + "}");
-                } else {
-                    out.println("{\"id\":" + id + ", \"value\":" + item_count + "}");
-                }
+            } else {
+                // Product not found in cart
+                out.println("{\"id\":" + id + ", \"value\":0}");
             }
+        } else {
+            // Invalid request parameters
+            out.println("{\"id\":0, \"value\":0}");
         }
     }
 }
