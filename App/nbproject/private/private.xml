@@ -3,10 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
+            <file>file:/C:/Users/shyam/Desktop/app/jsp-web-project/App/web/pagination.jsp</file>
+            <file>file:/C:/Users/shyam/Desktop/app/jsp-web-project/App/web/SiteParts/admin%20logout.jsp</file>
+            <file>file:/C:/Users/shyam/Desktop/app/jsp-web-project/App/web/products.jsp</file>
+            <file>file:/C:/Users/shyam/Desktop/app/jsp-web-project/App/web/cart.jsp</file>
+            <file>file:/C:/Users/shyam/Desktop/app/jsp-web-project/App/src/java/admin/Logout.java</file>
+            <file>file:/C:/Users/shyam/Desktop/app/jsp-web-project/App/web/discount.jsp</file>
+=======
             <file>file:/C:/Users/Kavindu%20R/Documents/App/jsp-web-project/App/web/index.jsp</file>
             <file>file:/C:/Users/Kavindu%20R/Documents/App/jsp-web-project/App/web/Sorting.jsp</file>
             <file>file:/C:/Users/Kavindu%20R/Documents/App/jsp-web-project/App/src/java/WishlistItem.java</file>
             <file>file:/C:/Users/Kavindu%20R/Documents/App/jsp-web-project/App/src/java/WishlistService.java</file>
+>>>>>>> ff8908a9fccdd8ebf825f81bfe8cd654d147f3c2
         </group>
     </open-files>
 </project-private>
