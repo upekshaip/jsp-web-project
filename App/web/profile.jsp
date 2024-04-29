@@ -52,8 +52,8 @@
             <label class="form-label">Gender</label>
             <select name="gender" class="form-control form-select-sm defalt-input-style text-white" required>
                 <%
-                    Functions func = new Functions();
-                    String options = func.setGender((String) user.get("gender"));
+                    Functions func1 = new Functions();
+                    String options = func1.setGender((String) user.get("gender"));
                 %>
                 <%=options%>
             </select>
