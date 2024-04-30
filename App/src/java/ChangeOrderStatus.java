@@ -1,5 +1,7 @@
+
 import Config.DB;
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,26 +17,21 @@ public class ChangeOrderStatus extends HttpServlet {
             throws ServletException, IOException {
 
         HttpSession session = request.getSession(false);
-        if (session == null || session.getAttribute("role") == null || !session.getAttribute("role").equals("admin")) {
+        if (session == null || !(session.getAttribute("role").equals("admin"))) {
             response.sendRedirect("./login.jsp?err=Please Login to place orders");
             return;
         }
-
-        String order_id = request.getParameter("order_id");
-        String status = request.getParameter("status");
-
-        if (order_id == null || order_id.trim().isEmpty() || status == null || status.trim().isEmpty()) {
-            response.sendRedirect("./admin.jsp?page=orders&err=Invalid input parameters");
-            return;
-        }
+        String order_id = request.getParameter("order_id").trim();
+        String status = request.getParameter("status").trim();
 
         DB db = new DB();
-        int res = db.updateOrderStatus(order_id.trim(), status.trim());
-        
+        int res = db.updateOrderStatus(order_id, status);
         if (res > 0) {
             response.sendRedirect("./admin.jsp?page=orders&ok=Status Changed Successfully");
-        } else {
-            response.sendRedirect("./admin.jsp?page=orders&err=Server Error");
+            return;
         }
+        response.sendRedirect("./admin.jsp?page=orders&err=Server Error");
+
     }
+
 }

@@ -26,7 +26,7 @@
                     <input type="password" class="form-control defalt-input-style text-white form-control-sm" name="password" placeholder="Password" required>
                 </div>
 
-                <button class="btn btn-warning col-12 mt-5 mb-3" type="submit">Log In</button>
+                <button class="btn btn-warning col-12 mt-5" type="submit">Log In</button>
             </form>
 
             <div class="text-white light-container-style">

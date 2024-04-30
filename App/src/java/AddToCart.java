@@ -22,7 +22,7 @@ public class AddToCart extends HttpServlet {
         String role = (String) session.getAttribute("role");
 
         if (session == null || role == null) {
-            response.sendRedirect("./login.jsp?err=Please Login to place orders.");
+            response.sendRedirect("./login.jsp?err=Please Login to place orders");
             return;
         }
 
@@ -32,11 +32,12 @@ public class AddToCart extends HttpServlet {
         HashMap<Integer, HashMap<String, Object>> cart = (HashMap<Integer, HashMap<String, Object>>) session.getAttribute("cart");
 
         cart = func.addItemToCart(cart, id);
-            
+
         if (cart == null) {
-            response.sendRedirect("./products.jsp?err=Item already added to the cart.");
+            response.sendRedirect("./products.jsp?err=Item already added to the cart");
             return;
         }
+
         int cart_size = 0;
         if (cart.size() > 0) {
             for (int key : cart.keySet()) {

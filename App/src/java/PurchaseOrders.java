@@ -1,59 +1,55 @@
+
 import Config.DB;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.HashMap;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.HashMap;
-import java.util.List;
-import org.apache.catalina.servlets.DefaultServlet.SortManager.Order;
 
-@WebServlet("/PurchaseOrders")
+@WebServlet(urlPatterns = {"/PurchaseOrders"})
 public class PurchaseOrders extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         HttpSession session = request.getSession(false);
-        if (session == null || session.getAttribute("role") == null) {
+        if (session == null || (session.getAttribute("role")) == null) {
             response.sendRedirect("./login.jsp?err=Please Login to place orders");
             return;
         }
 
-        // Get user information from the session
-        HashMap<String, Object> user = (HashMap<String, Object>) session.getAttribute("user");
-        int userId = (int) user.get("uid");
-        String username = (String) user.get("username");
-
-        // Get the person parameter from the request
+        HashMap user = (HashMap) session.getAttribute("user");
+        int uid = Integer.parseInt((String) user.get("uid"));
         String person = request.getParameter("person");
 
-        // Check if the person matches the logged-in user
-        if (Integer.toString(userId).equals(person)) {
-            DB db = new DB();
-            // Retrieve orders sorted by date
-            List<Order> orders = db.getOrdersByUserIdSortedByDate(userId);
+        if (Integer.parseInt(person) == uid) {
+            PrintWriter out = response.getWriter();
+            HashMap<Integer, HashMap<String, Object>> cart = (HashMap<Integer, HashMap<String, Object>>) session.getAttribute("cart");
 
-            if (orders.isEmpty()) {
-                // No orders found
-                response.sendRedirect("./cart.jsp?err=No orders found for this user");
+            DB db = new DB();
+            int x = db.placeOrder(uid, (String) user.get("username"), cart);
+            if (x > 0) {
+                response.sendRedirect("./orders.jsp?ok=Order Completed");
+                HashMap<Integer, HashMap<String, Object>> new_cart = new HashMap<>();
+                session.setAttribute("cart", new_cart);
+                return;
+            } else if (x == 0) {
+                response.sendRedirect("./cart.jsp?err=Please select at least one item");
+                return;
+            } else {
+                response.sendRedirect("./cart.jsp?err=Server Error");
                 return;
             }
 
-            // Process orders...
-            // For demonstration purposes, let's just print them out
-            orders.forEach(order -> {
-                System.out.println(order);
-            });
-
-            // You can continue processing the orders as needed
-
-            response.sendRedirect("./orders.jsp?ok=Orders Retrieved Successfully");
         } else {
-            // Person parameter does not match the logged-in user
             response.sendRedirect("./index.jsp");
+            return;
         }
+
     }
 }
