@@ -2,6 +2,7 @@ package Config;
 
 import java.sql.*;
 import java.util.HashMap;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -296,5 +297,17 @@ public class DB {
         String sql = "INSERT INTO contacts(name, email, subject, message) VALUES ('" + name + "', '" + email + "', '" + subject + "', '" + message + "');";
         int x = this.run_sql(sql);
         return x;
+    }
+
+    public boolean isEmailTaken(String email, String username) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public List<.PurchaseOrders.Order> getOrdersByUserIdSortedByDate(int userId) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public List<.PurchaseOrders.Order> getOrdersByUserIdSortedByDate(int userId) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

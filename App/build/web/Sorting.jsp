@@ -4,8 +4,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 
 public class ProductServlet extends HttpServlet {
-    
-    // Sample product data (replace with your actual product data)
+
     private List<Product> products = Arrays.asList(
         new Product(1, "Product A", 100),
         new Product(2, "Product B", 200),
@@ -13,22 +12,30 @@ public class ProductServlet extends HttpServlet {
     );
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException {
-        
-        // Retrieve the sort parameter from the request
+            throws ServletException, IOException {
+
         String sortParam = request.getParameter("sort");
-        
-        // Sort the products based on the sort parameter
+        String sortOrder = request.getParameter("order"); // Add parameter for sort order
+
+        // Default sort order is ascending
+        Comparator<Product> comparator = null;
         if ("name".equals(sortParam)) {
-            Collections.sort(products, Comparator.comparing(Product::getName));
+            comparator = Comparator.comparing(Product::getName);
         } else if ("price".equals(sortParam)) {
-            Collections.sort(products, Comparator.comparing(Product::getPrice));
+            comparator = Comparator.comparing(Product::getPrice);
         }
-        
-        // Set products as an attribute to be accessed in JSP
+
+        // Apply descending order if specified
+        if ("desc".equals(sortOrder) && comparator != null) {
+            comparator = comparator.reversed();
+        }
+
+        // Sort the products based on the comparator
+        if (comparator != null) {
+            Collections.sort(products, comparator);
+        }
+
         request.setAttribute("products", products);
-        
-        // Forward the request to the JSP page for rendering
         RequestDispatcher dispatcher = request.getRequestDispatcher("/products.jsp");
         dispatcher.forward(request, response);
     }
