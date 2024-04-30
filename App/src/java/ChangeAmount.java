@@ -22,10 +22,9 @@ public class ChangeAmount extends HttpServlet {
         String method = request.getParameter("method");
 
         if (session == null || session.getAttribute("role") == null) {
-            response.sendRedirect("./login.jsp?err=Please Login to place orders");
+            response.sendRedirect("./login.jsp?err=Please Login to place orders!!!");
             return;
         }
-
         if (id != null && method != null) {
             HashMap<Integer, HashMap<String, Object>> cart = (HashMap<Integer, HashMap<String, Object>>) session.getAttribute("cart");
 
