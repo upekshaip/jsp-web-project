@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
+import org.apache.catalina.servlets.DefaultServlet.SortManager.Order;
 
 @WebServlet("/PurchaseOrders")
 public class PurchaseOrders extends HttpServlet {
@@ -31,7 +32,6 @@ public class PurchaseOrders extends HttpServlet {
 
         // Check if the person matches the logged-in user
         if (Integer.toString(userId).equals(person)) {
-            DB db = new DB();
             // Retrieve orders sorted by date
             List<Order> orders = db.getOrdersByUserIdSortedByDate(userId);
 
@@ -43,9 +43,9 @@ public class PurchaseOrders extends HttpServlet {
 
             // Process orders...
             // For demonstration purposes, let's just print them out
-            for (Order order : orders) {
+            orders.forEach(order -> {
                 System.out.println(order);
-            }
+            });
 
             // You can continue processing the orders as needed
 
