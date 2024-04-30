@@ -6,16 +6,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/adminLogout")
+@WebServlet("/AdminLogout")
 public class Logout extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession(false); // Retrieve the session without creating a new one if it doesn't exist
+        HttpSession session = request.getSession(false); 
 
         if (session != null) {
-            session.invalidate(); // Invalidate the session, effectively logging out the admin
-            response.sendRedirect("adminLogin.jsp"); // Redirect to admin login page
+            session.invalidate();
+            response.sendRedirect("AdminLogin.jsp"); 
         } else {
-            response.sendRedirect("adminLogin.jsp"); // If session doesn't exist, redirect to admin login page
+            response.sendRedirect("AdminLogin.jsp"); 
         }
     }
 }
