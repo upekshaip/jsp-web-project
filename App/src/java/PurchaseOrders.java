@@ -32,6 +32,7 @@ public class PurchaseOrders extends HttpServlet {
 
         // Check if the person matches the logged-in user
         if (Integer.toString(userId).equals(person)) {
+            DB db = new DB();
             // Retrieve orders sorted by date
             List<Order> orders = db.getOrdersByUserIdSortedByDate(userId);
 
