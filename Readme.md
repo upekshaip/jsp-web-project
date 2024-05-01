@@ -110,3 +110,38 @@ Frontend and backend developers are invited to contribute to the project in the 
   - Implement new features and functionalities according to project requirements.
 
 Contributions will be managed through GitHub pull requests following the project's contribution guidelines.
+
+# Group Members
+
+<table style="width:100%">
+  <tr>
+    <th>Student ID</th>
+    <th>Name</th>
+    <th>GitHub Username</th>
+  </tr>
+  <tr>
+    <td>27292</td>
+    <td>GUI Perera (Group Leader)</td>
+    <td><a href="https://github.com/upekshaip">@upekshaip</a></td>
+  </tr>
+  <tr>
+    <td>27601</td>
+    <td>SWKR Pinsiri</td>
+    <td><a href="https://github.com/Kavindu-R">@Kavindu-R</a></td>
+  </tr>
+  <tr>
+    <td>27578</td>
+    <td>MJM Shaahid</td>
+    <td><a href="https://github.com/MShaahid">@MShaahid</a></td>
+  </tr>
+  <tr>
+    <td>27958</td>
+    <td>MCA Jayasingha</td>
+    <td><a href="https://github.com/ChethakaJayasingha">@ChethakaJayasingha</a></td>
+  </tr>
+  <tr>
+    <td>26961</td>
+    <td>JKS Senevirathna</td>
+    <td><a href="https://github.com/Shyaminda">@Shyaminda</a></td>
+  </tr>
+</table>
