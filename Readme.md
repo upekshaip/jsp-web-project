@@ -1,3 +1,29 @@
+<div align="center">
+  <img src="https://img.shields.io/badge/-Java%20Servlets-orange" />
+  <img src="https://img.shields.io/badge/-JSP-blue" />
+  <img src="https://img.shields.io/badge/-CSS-blueviolet" />
+  <img src="https://img.shields.io/badge/-SCSS-ff69b4" />
+  <img src="https://img.shields.io/badge/-MySQL-blue" />
+  <img src="https://img.shields.io/badge/-Java-red" />
+  <img src="https://img.shields.io/badge/-Bootstrap%205.3-563d7c" />
+</div>
+<div align="center">
+  <img src="https://img.shields.io/github/repo-size/upekshaip/jsp-web-project" />
+  <img src="https://img.shields.io/github/stars/upekshaip/jsp-web-project" />
+</div>
+<br>
+
+## Table of Contents
+
+- [Project Setup Instructions](#project-setup-instructions)
+- [Features](#features)
+- [Future Implementation](#future-implementation)
+- [Issues](#issues)
+- [Fixed Issues](#fixed-issues)
+- [To-Dos](#to-dos)
+- [Developer Contributions](#developer-contributions)
+- [Group Members](#group-members)
+
 # Project Setup Instructions
 
 Follow these steps to set up the project:
@@ -74,12 +100,16 @@ git clone https://github.com/upekshaip/jsp-web-project.git
 
 # Issues
 
+- Note that all the issues are on the issues tab. Go there to see them 😇
+
 1. **UI/UX Improvements**: Enhance the user interface and experience to make navigation and interaction more intuitive.
 2. **Performance Optimization**: Address any performance bottlenecks to ensure smooth operation, especially during high traffic periods.
 3. **Security Enhancements**: Implement additional security measures to protect user data and prevent unauthorized access.
 4. **Bug Fixes**: Address any reported bugs or issues to improve overall stability and functionality.
 
 # Fixed Issues
+
+- Note that all the issues are on the issues tab. Go there to see them 😇
 
 1. **Database Connection Error**: Resolved issues related to database connectivity and configuration.
 2. **UI Rendering Bugs**: Fixed various bugs related to UI rendering and responsiveness.
