@@ -12,7 +12,6 @@
   <img src="https://img.shields.io/github/stars/upekshaip/jsp-web-project" />
 </div>
 <br>
-
 ## Table of Contents
 
 - [Project Setup Instructions](#project-setup-instructions)
