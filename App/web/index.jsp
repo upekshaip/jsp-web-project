@@ -37,7 +37,6 @@
 <section class=" text-white p-0 container defalt-container-style">
     <div class="title_info text-center mb-5 mt-5">
         <h1 class="m-0">We Consider,</h1>
-        <p>Empowering Your Health Journey With QR Code technology</p>
     </div>
     <table class="table-sec">
         <tr class="tr-index">
